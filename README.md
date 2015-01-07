@@ -1,2 +1,3 @@
 MIT POKERBOT
-C3 and company
+Meet struggleBot!
+By: C3 and company
