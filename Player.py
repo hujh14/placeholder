@@ -1,6 +1,7 @@
 import argparse
 import socket
 import sys
+from hand import *
 
 """
 Simple example pokerbot, written in python.
@@ -25,6 +26,14 @@ class Player:
             # Here is where you should implement code to parse the packets from
             # the engine and act on it. We are just printing it instead.
             print data
+            inp = data.split()
+            if inp[0] == 'NEWGAME':
+
+            if inp[0] == 'NEWHAND':
+                hand = Hand(inp)
+            if inp[0] == 'GETACTION':
+                action = hand.getBestAction(inp)
+            if inp[0] == 'HANDOVER'
             
             # When appropriate, reply to the engine with a legal action.
             # The engine will ignore all spurious responses.
