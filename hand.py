@@ -28,14 +28,15 @@ class Hand:
 
 		#self.opponentHandDist = pokerHandDist(uniform)
 
-	def getBestAction(self,inp):
+        def parsePacket(self,inp):
                 # inp contains: GETACTION potSize numBoardCards
                 # [boardCards] [stackSizes] numActivePlayers
                 # [activePlayers] numLastActions [lastActions]
                 # numLegalActions [legalActions] timebank
-                inp = inp.split()
 
                 # I'm so sorry
+                # Do parse things
+                # Grabs the lists in the packet and puts them in actual lists
                 inp = [inp[0], inp[1], inp[3:int(inp[2]) + 3]] + inp[int(inp[2]) + 3:]
                 inp = inp[0:3] + [inp[3:6], inp[6], inp[7:10],
                                   inp[10], inp[11:int(inp[10]) + 11]] + inp[int(inp[10]) + 11:]
@@ -54,6 +55,8 @@ class Hand:
                 self.legalActions = inp[9]
                 self.timeBank = float(inp[10])
 
+	def getBestAction(self):
+
                 print self.holeCard1
                 print self.holeCard2
                 v = self.value(self.holeCard1) + self.value(self.holeCard2)
@@ -61,6 +64,7 @@ class Hand:
                         return 'CHECK'
                 else:
                         return 'RAISE:2'
+                
         def strToBool(str):
                 if str.lower() == 'true':
                         return True

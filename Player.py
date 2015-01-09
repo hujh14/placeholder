@@ -27,13 +27,12 @@ class Player:
             # the engine and act on it. We are just printing it instead.
             print data
             inp = data.split()
-            if inp[0] == 'NEWGAME':
-
+            hand.parsePacket(inp)
             if inp[0] == 'NEWHAND':
                 hand = Hand(inp)
             if inp[0] == 'GETACTION':
                 action = hand.getBestAction(inp)
-            if inp[0] == 'HANDOVER'
+                print("Action: " + action)
             
             # When appropriate, reply to the engine with a legal action.
             # The engine will ignore all spurious responses.
@@ -44,7 +43,7 @@ class Player:
             word = data.split()[0]
             if word == "GETACTION":
                 # Currently CHECK on every move. You'll want to change this.
-                s.send("CHECK\n")
+                s.send(action + "\n")
             elif word == "REQUESTKEYVALUES":
                 # At the end, the engine will allow your bot save key/value pairs.
                 # Send FINISH to indicate you're done.
