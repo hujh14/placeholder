@@ -27,11 +27,11 @@ class Player:
             # the engine and act on it. We are just printing it instead.
             print data
             inp = data.split()
-            hand.parsePacket(inp)
             if inp[0] == 'NEWHAND':
                 hand = Hand(inp)
             if inp[0] == 'GETACTION':
-                action = hand.getBestAction(inp)
+                hand.parsePacket(inp)
+                action = hand.getBestAction()
                 print("Action: " + action)
             
             # When appropriate, reply to the engine with a legal action.

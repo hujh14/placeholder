@@ -48,7 +48,7 @@ class Hand:
                 self.numActivePlayers = int(inp[4])
                 self.activePlayers = inp[5]
                 for i in range(0, len(inp[5])):
-                        self.activePlayers[i] = strToBool(self.activePlayers[i])
+                        self.activePlayers[i] = self.strToBool(self.activePlayers[i])
                 self.numLastActions = int(inp[6])
                 self.lastActions = inp[7]
                 self.numLegalActions = int(inp[8])
@@ -56,7 +56,7 @@ class Hand:
                 self.timeBank = float(inp[10])
 
 	def getBestAction(self):
-
+                
                 print self.holeCard1
                 print self.holeCard2
                 v = self.value(self.holeCard1) + self.value(self.holeCard2)
@@ -65,8 +65,8 @@ class Hand:
                 else:
                         return 'RAISE:2'
                 
-        def strToBool(str):
-                if str.lower() == 'true':
+        def strToBool(self, s):
+                if s.lower() == 'true':
                         return True
                 else:
                         return False
