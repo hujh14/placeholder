@@ -2,32 +2,33 @@ from pokerHandDist import *
 class Hand:
 
     def __init__ (self, initData):
-		# initData contains: NEWHAND handId seat holeCard1 holeCard2 [stackSizes] numActivePlayers [activePlayers] timeBank
+        # initData contains: NEWHAND handId seat holeCard1 holeCard2 [stackSizes] numActivePlayers [activePlayers] timeBank
 
         # These get initialized at the start of the hand
-		self.handId = int(initData[1])
-		self.seat = int(initData[2])
-		self.holeCard1 = initData[3]
-		self.holeCard2 = initData[4]
-		self.stackSizes = initData[5:8]
-		self.numActivePlayers = int(initData[8])
-		self.activePlayers = initData[9:12]
-	    self.timeBank = float(initData[12])
+        self.handId = int(initData[1])
+        self.seat = int(initData[2])
+        self.holeCard1 = initData[3]
+        self.holeCard2 = initData[4]
+        self.stackSizes = initData[5:8]
+        self.numActivePlayers = int(initData[8])
+        self.activePlayers = initData[9:12]
+        self.timeBank = float(initData[12])
 
-        # These get defined once we get the first GETACTION packet
-	    self.potSize = 0
-		self.numBoardCards = 0
-		self.boardCards = []
-		self.stackSizes = []
-		self.numActivePlayers = 0
-		self.activePlayers = []
-		self.numLastActions = 0
-		self.lastActions = []
-		self.numLegalActions = 0
-		self.legalActions = []
+            # These get defined once we get the first GETACTION packet
+        self.potSize = 0
+        self.numBoardCards = 0
+        self.boardCards = []
+        self.stackSizes = []
+        self.numActivePlayers = 0
+        self.activePlayers = []
+        self.numLastActions = 0
+        self.lastActions = []
+        self.numLegalActions = 0
+        self.legalActions = []
 
-        self.oppAHandDist = pokerHandDist().removeHoleCards(self.holeCard1,self.holeCard2)
-        self.oppBHandDist = pokerHandDist().removeHoleCards(self.holdCard1,self.holeCard2)
+        self.oppAHandDist = pokerHandDist().removeExistingCards([(self.holeCard1,self.holeCard2)])
+        self.oppBHandDist = pokerHandDist().removeExistingCards([(self.holeCard1,self.holeCard2)])
+            
 
         self.bestCards = []
 
@@ -60,7 +61,7 @@ class Hand:
         self.bestCards = self.getBestCards()
 
     def getBestAction(self):
-        
+    
         print self.holeCard1
         print self.holeCard2
         v = self.value(self.holeCard1) + self.value(self.holeCard2)
