@@ -1,4 +1,5 @@
 from pokerHandDist import *
+from pbots_calc import *
 class Hand:
 
     def __init__ (self, initData):
@@ -78,3 +79,45 @@ class Hand:
     
     def getBestCards(self):
         cards = self.boardCards
+        # I'm so sorry
+        # Do parse things
+        # Grabs the lists in the packet and puts them in actual lists
+        inp = [inp[0], inp[1], inp[3:int(inp[2]) + 3]] + inp[int(inp[2]) + 3:]
+        inp = inp[0:3] + [inp[3:6], inp[6], inp[7:10], inp[10], inp[11:int(inp[10]) + 11]] + inp[int(inp[10]) + 11:]
+        inp = inp[0:9] + [inp[9:int(inp[8]) + 9]] + inp[int(inp[8]) + 9:]
+
+        self.potSize = int(inp[1])
+        self.numBoardCards = len(inp[2])
+        self.boardCards = inp[3]
+        self.numActivePlayers = int(inp[4])
+        self.activePlayers = inp[5]
+        for i in range(0, len(inp[5])):
+                self.activePlayers[i] = self.strToBool(self.activePlayers[i])
+        self.numLastActions = int(inp[6])
+        self.lastActions = inp[7]
+        self.numLegalActions = int(inp[8])
+        self.legalActions = inp[9]
+        self.timeBank = float(inp[10])
+
+    def getBestAction(self):
+                
+        print self.holeCard1
+        print self.holeCard2
+        v = self.value(self.holeCard1) + self.value(self.holeCard2)
+        if v < 15:
+            return 'CHECK'
+        else:
+            return 'RAISE:2'
+
+    def getEquity(self):
+        current_cards = [self.holeCard1, self.holeCard2] + self.boardCards
+        perms = getPermutations(current_cards)
+        for perm in perms:
+            ev = pbots_calc.calc([[self.holeCard1, self.holeCard2]], self.boardCards)
+        
+    def strToBool(self, s):
+        if s.lower() == 'true':
+            return True
+        else:
+            return False
+        
