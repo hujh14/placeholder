@@ -85,4 +85,6 @@ class Hand:
             ev = pbots_calc.calc([[self.holeCard1, self.holeCard2]], self.boardCards)
 
     def getBestCards(self):
+        cards = self.boardCards
+        
 
