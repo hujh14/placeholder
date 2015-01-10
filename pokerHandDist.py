@@ -28,12 +28,11 @@ class pokerHandDist:
 		self.oppHandADist = uniformDist(list_of_hands)
 		self.oppHandBDist = uniformDIst(list_of_hands)
 
-	def removeHoleCards(hc1,hc2):
+	def removeExistingCards(rlist):
 		for x in range(len(list_of_hands)):
-			if (hc1,hc2) == list_of_hands[x]:
-				del list_of_hands[x]
-			elif (hc2,hc1) == list_of_hands[x]:
-				del list_of_hands[x]
+			for y in range(len(rlist)):
+				if rlist[y] == list_of_hands[x]:
+					del list_of_hands[x]
 
 		self.oppHandADist = uniformDist(list_of_hands)
 		self.oppHandBDist = uniformDist(list_of_hands)

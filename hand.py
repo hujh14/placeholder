@@ -26,8 +26,8 @@ class Hand:
 		self.numLegalActions = 0
 		self.legalActions = []
 
-        self.oppAHandDist = pokerHandDist().removeHoleCards(self.holeCard1,self.holeCard2)
-        self.oppBHandDist = pokerHandDist().removeHoldCards(self.holdCard1,self.holeCard2)
+        self.oppAHandDist = pokerHandDist().removeExistingCards([(self.holeCard1,self.holeCard2)])
+        self.oppBHandDist = pokerHandDist().removeExistingCards([(self.holeCard1,self.holeCard2)])
         
         def parsePacket(self,inp):
                 # inp contains: GETACTION potSize numBoardCards
