@@ -28,12 +28,14 @@ import ctypes
 import ctypes.util
 import sys
 
-if sys.platform.startswith('win'):
+'''if sys.platform.startswith('win'):
     pbots_calc = "pbots_calc"
 elif sys.platform.startswith('darwin'):
     pbots_calc = "libpbots_calc.dylib"
 else:
     pbots_calc = "libpbots_calc.so"
+'''
+pbots_calc = "pbots_calc"
 
 class _Results(ctypes.Structure):
     _fields_ = [("ev", ctypes.POINTER(ctypes.c_double)),
