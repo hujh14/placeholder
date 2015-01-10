@@ -1,4 +1,5 @@
 from pokerHandDist import *
+from pbots_calc import *
 class Hand:
 
 	def __init__ (self, initData):
@@ -39,8 +40,7 @@ class Hand:
                 # Do parse things
                 # Grabs the lists in the packet and puts them in actual lists
                 inp = [inp[0], inp[1], inp[3:int(inp[2]) + 3]] + inp[int(inp[2]) + 3:]
-                inp = inp[0:3] + [inp[3:6], inp[6], inp[7:10],
-                                  inp[10], inp[11:int(inp[10]) + 11]] + inp[int(inp[10]) + 11:]
+                inp = inp[0:3] + [inp[3:6], inp[6], inp[7:10], inp[10], inp[11:int(inp[10]) + 11]] + inp[int(inp[10]) + 11:]
                 inp = inp[0:9] + [inp[9:int(inp[8]) + 9]] + inp[int(inp[8]) + 9:]
         
                 self.potSize = int(inp[1])
@@ -65,7 +65,14 @@ class Hand:
                         return 'CHECK'
                 else:
                         return 'RAISE:2'
-                
+
+        def getEquity(self):
+                current_cards = [self.holeCard1, self.holeCard2] + self.boardCards
+                perms = getPermutations(current_cards)
+                for perm in perms:
+                        
+                        ev = pbots_calc.calc([[self.holeCard1, self.holeCard2]] + , self.boardCards)
+        
         def strToBool(self, s):
                 if s.lower() == 'true':
                         return True
