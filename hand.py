@@ -27,6 +27,8 @@ class Hand:
 		self.legalActions = []
 
 		#self.opponentHandDist = pokerHandDist(uniform)
+        self.oppAHandDist = pokerHandDist()
+        self.oppBHandDist = 
 
         def parsePacket(self,inp):
                 # inp contains: GETACTION potSize numBoardCards
