@@ -59,7 +59,11 @@ class Hand:
         self.legalActions = inp[9]
         self.timeBank = float(inp[10])
 
+        # Make sure to run this function only once per whenever, not at every parse packet
         self.bestCards = self.getBestCards()
+
+        self.oppAHandDist.update(self.bestCards,)
+        self.oppBHandDist.update(self.bestCards,)
 
     def getBestAction(self):
     
@@ -86,5 +90,6 @@ class Hand:
 
     def getBestCards(self):
         cards = self.boardCards
+        
         
 
