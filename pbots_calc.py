@@ -95,8 +95,6 @@ def calc(hands, board = '', dead = '', iters = 1000000):
     pcalc.free_results(res)
     return results
 
-print calc([['Ah','Ad'],['Kh','Kd']])
-
 # 'results' is a Results object that includes ev
 # (the probability distribution, in list form),
 # hands, which is the same paramater we passed it,

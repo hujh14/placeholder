@@ -29,13 +29,17 @@ class pokerHandDist:
 		self.oppHandBDist = uniformDIst(list_of_hands)
 
 	def removeExistingCards(rlist):
+		p0 = 1.0/len(list_of_hands)
+
 		for x in range(len(list_of_hands)):
 			for y in range(len(rlist)):
 				if rlist[y] == list_of_hands[x]:
 					del list_of_hands[x]
 
-		self.oppHandADist = uniformDist(list_of_hands)
-		self.oppHandBDist = uniformDist(list_of_hands)
-		
+		new_p = 1.0/(p0*len(list_of_hands))
+		self.oppHandADist = dict([(h,p) for h in list_of_hands])
+		self.oppHandBDist = dict([(h,p) for h in list_of_hands])	
+
+				
 
 		
