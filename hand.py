@@ -41,7 +41,7 @@ class Hand:
             
         # initialize possible hand objects
         self.possHands = [possHand(tup) for tup in self.listOfTuples]
-        print self.possHands[0].hasFlushDraw
+        
         
 
     def parsePacket(self,inp):
