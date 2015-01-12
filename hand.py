@@ -1,10 +1,18 @@
 from pokerHandDist import *
 from pbots_calc import *
+from possHand import *
+import itertools
+
+
 class Hand:
 
     def __init__ (self, initData):
         # initData contains: NEWHAND handId seat holeCard1 holeCard2 [stackSizes] numActivePlayers [activePlayers] timeBank
 
+        # generic stuff that doesn't need to be regenerated every hand.
+        self.cardList = ['2s','3s','4s','5s','6s','7s','8s','9s','Ts','Js','Qs','Ks','As','2c','3c','4c','5c','6c','7c','8c','9c','Tc','Jc','Qc','Kc','Ac','2h','3h','4h','5h','6h','7h','8h','9h','Th','Jh','Qh','Kh','Ah','2d','3d','4d','5d','6d','7d','8d','9d','Td','Jd','Qd','Kd','Ad']
+        self.listOfTuples = [tup for tup in itertools.combinations(self.cardList,2)]
+        
         # These get initialized at the start of the hand
         self.handId = int(initData[1])
         self.seat = int(initData[2])
@@ -14,7 +22,7 @@ class Hand:
         self.numActivePlayers = int(initData[8])
         self.activePlayers = initData[9:12]
         self.timeBank = float(initData[12])
-
+        
             # These get defined once we get the first GETACTION packet
         self.potSize = 0
         self.numBoardCards = 0
@@ -27,11 +35,14 @@ class Hand:
         self.numLegalActions = 0
         self.legalActions = []
 
-        self.oppAHandDist = pokerHandDist().removeExistingCards([(self.holeCard1,self.holeCard2)])
-        self.oppBHandDist = pokerHandDist().removeExistingCards([(self.holeCard1,self.holeCard2)])
+        # this Class needs help!!!!
+        #self.oppAHandDist = pokerHandDist(self.listOfTuples).removeExistingCards([(self.holeCard1,self.holeCard2)])
+        #self.oppBHandDist = pokerHandDist(self.listOfTuples).removeExistingCards([(self.holeCard1,self.holeCard2)])
             
-
-        self.bestCards = []
+        # initialize possible hand objects
+        self.possHands = [possHand(tup) for tup in self.listOfTuples]
+        print self.possHands[0].hasFlushDraw
+        
 
     def parsePacket(self,inp):
         # inp contains: GETACTION potSize numBoardCards
@@ -60,16 +71,16 @@ class Hand:
         self.timeBank = float(inp[10])
 
         # Make sure to run this function only once per whenever, not at every parse packet
-        self.bestCards = self.getBestCards()
+        
 
-        self.oppAHandDist.update(self.bestCards,)
-        self.oppBHandDist.update(self.bestCards,)
+        #self.oppAHandDist.update(self.bestCards,)
+        #self.oppBHandDist.update(self.bestCards,)
 
     def getBestAction(self):
     
         print self.holeCard1
         print self.holeCard2
-        v = self.value(self.holeCard1) + self.value(self.holeCard2)
+        v = 2
         if v < 15:
             return 'CHECK'
         else:
@@ -88,8 +99,6 @@ class Hand:
         for perm in perms:
             ev = pbots_calc.calc([[self.holeCard1, self.holeCard2]], self.boardCards)
 
-    def getBestCards(self):
-        cards = self.boardCards
-        
+
         
 

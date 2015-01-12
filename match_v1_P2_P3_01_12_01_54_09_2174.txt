@@ -1,0 +1,2320 @@
+6.176 MIT Pokerbots - P2 vs P3 vs v1 (stack=200, bb=2)
+Hand #1, P2 (200), P3 (200), v1 (200)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [9d Js]
+Dealt to P3 [Ts 4c]
+Dealt to v1 [3h 2h]
+P2 raises to 5
+P3 calls 5
+v1 folds
+*** FLOP *** (12) [Qs 5s Qc]
+P3 bets 5
+P2 calls 5
+*** TURN *** (22) [Qs 5s Qc] [8d]
+P3 bets 3
+P2 folds
+P3 wins the pot (25)
+
+Hand #2, v1 (198), P2 (190), P3 (212)
+P2 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [6s Ts]
+Dealt to P2 [2s 6d]
+Dealt to P3 [5h 8c]
+v1 folds
+P2 raises to 5
+P3 folds
+P2 wins the pot (7)
+
+Hand #3, P3 (210), v1 (198), P2 (192)
+v1 posts the blind of 1
+P2 posts the blind of 2
+Dealt to P3 [8d Jd]
+Dealt to v1 [2c 8c]
+Dealt to P2 [2s Js]
+P3 raises to 5
+v1 folds
+P2 raises to 11
+P3 raises to 20
+P2 folds
+P3 wins the pot (32)
+
+Hand #4, P2 (181), P3 (222), v1 (197)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Ks 5s]
+Dealt to P3 [5d Kd]
+Dealt to v1 [4d 2c]
+P2 raises to 6
+P3 calls 6
+v1 folds
+*** FLOP *** (14) [8h Ah Th]
+P3 checks
+P2 bets 5
+P3 raises to 24
+P2 folds
+P3 wins the pot (43)
+
+Hand #5, v1 (195), P2 (170), P3 (235)
+P2 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [Js Qs]
+Dealt to P2 [5s 6s]
+Dealt to P3 [2h 8s]
+v1 folds
+P2 folds
+P3 wins the pot (3)
+
+Hand #6, P3 (236), v1 (195), P2 (169)
+v1 posts the blind of 1
+P2 posts the blind of 2
+Dealt to P3 [8c 6s]
+Dealt to v1 [3d 2s]
+Dealt to P2 [Ts 4h]
+P3 raises to 4
+v1 folds
+P2 calls 4
+*** FLOP *** (9) [3h 2c 7c]
+P2 bets 6
+P3 calls 6
+*** TURN *** (21) [3h 2c 7c] [As]
+P2 bets 11
+P3 raises to 48
+P2 folds
+P3 wins the pot (80)
+
+Hand #7, P2 (148), P3 (258), v1 (194)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Kd Qh]
+Dealt to P3 [Jd 9h]
+Dealt to v1 [2s Td]
+P2 raises to 4
+P3 calls 4
+v1 folds
+*** FLOP *** (10) [5h Ts 8s]
+P3 bets 8
+P2 calls 8
+*** TURN *** (26) [5h Ts 8s] [3c]
+P3 checks
+P2 checks
+*** RIVER *** (26) [5h Ts 8s 3c] [9d]
+P3 checks
+P2 checks
+P2 shows [Kd Qh]
+P3 shows [Jd 9h]
+P3 wins the pot (26)
+
+Hand #8, v1 (192), P2 (136), P3 (272)
+P2 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [3c 5d]
+Dealt to P2 [Ah 3s]
+Dealt to P3 [Qd 3d]
+v1 folds
+P2 raises to 4
+P3 raises to 6
+P2 folds
+P3 wins the pot (10)
+
+Hand #9, P3 (276), v1 (192), P2 (132)
+v1 posts the blind of 1
+P2 posts the blind of 2
+Dealt to P3 [6s 5s]
+Dealt to v1 [7d 5d]
+Dealt to P2 [3h 7c]
+P3 raises to 6
+v1 folds
+P2 raises to 16
+P3 raises to 43
+P2 calls 43
+*** FLOP *** (87) [4d 3s Jc]
+P2 checks
+P3 checks
+*** TURN *** (87) [4d 3s Jc] [Ah]
+P2 bets 82
+P3 raises to 89
+P2 folds
+P3 wins the pot (258)
+
+Hand #10, P2 (7), P3 (402), v1 (191)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [2c 8c]
+Dealt to P3 [4h 8s]
+Dealt to v1 [Ad 4s]
+P2 folds
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [3c Tc 6d]
+P3 checks
+v1 checks
+*** TURN *** (4) [3c Tc 6d] [Qc]
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #11, v1 (189), P2 (7), P3 (404)
+P2 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [4h 7d]
+Dealt to P2 [6c 3h]
+Dealt to P3 [5h 6s]
+v1 folds
+P2 raises to 5
+P3 raises to 7
+P2 calls 7
+*** FLOP *** (14) [Ks 5s Td]
+*** TURN *** (14) [Ks 5s Td] [Jh]
+*** RIVER *** (14) [Ks 5s Td Jh] [Ad]
+P2 shows [6c 3h]
+P3 shows [5h 6s]
+P3 wins the pot (14)
+
+Hand #12, P3 (411), v1 (189), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [Kh 2s]
+Dealt to v1 [7h Js]
+Dealt to P2 [As Kc]
+P3 folds
+v1 wins the pot (3)
+
+Hand #13, P2 (0), P3 (410), v1 (190)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [9s 7h]
+Dealt to P3 [Ad 5s]
+Dealt to v1 [Qc Qd]
+v1 folds
+P3 wins the pot (3)
+
+Hand #14, v1 (189), P2 (0), P3 (411)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [2s Tc]
+Dealt to P2 [Ah Qd]
+Dealt to P3 [2d 9d]
+P3 folds
+v1 wins the pot (3)
+
+Hand #15, P3 (410), v1 (190), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [Kd 8d]
+Dealt to v1 [4h 6s]
+Dealt to P2 [Ts Jc]
+v1 folds
+P3 wins the pot (3)
+
+Hand #16, P2 (0), P3 (411), v1 (189)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Kh 2c]
+Dealt to P3 [Ac 3h]
+Dealt to v1 [Kc Ah]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #17, v1 (187), P2 (0), P3 (413)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [2s 5h]
+Dealt to P2 [Ad 8d]
+Dealt to P3 [Qh Ks]
+v1 folds
+P3 wins the pot (3)
+
+Hand #18, P3 (414), v1 (186), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [Tc 5c]
+Dealt to v1 [Kd 8h]
+Dealt to P2 [3d 2d]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [Jc 5s 2s]
+v1 checks
+P3 checks
+*** TURN *** (4) [Jc 5s 2s] [Kc]
+v1 checks
+P3 checks
+*** RIVER *** (4) [Jc 5s 2s Kc] [Qs]
+v1 checks
+P3 checks
+P3 shows [Tc 5c]
+v1 shows [Kd 8h]
+v1 wins the pot (4)
+
+Hand #19, P2 (0), P3 (412), v1 (188)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [3s Ac]
+Dealt to P3 [7h 6c]
+Dealt to v1 [Kc Kd]
+v1 folds
+P3 wins the pot (3)
+
+Hand #20, v1 (187), P2 (0), P3 (413)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [4c 3c]
+Dealt to P2 [3d 8s]
+Dealt to P3 [Qc Kh]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #21, P3 (415), v1 (185), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [Qd 8h]
+Dealt to v1 [Tc Js]
+Dealt to P2 [Qh 2c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #22, P2 (0), P3 (416), v1 (184)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Qh 8c]
+Dealt to P3 [4s Kd]
+Dealt to v1 [Ks 9c]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [6d Kh Jd]
+v1 checks
+P3 bets 2
+v1 folds
+P3 wins the pot (6)
+
+Hand #23, v1 (182), P2 (0), P3 (418)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [Qc 2d]
+Dealt to P2 [9h Ts]
+Dealt to P3 [Ad 5d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #24, P3 (419), v1 (181), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [Kd 6s]
+Dealt to v1 [6h 4c]
+Dealt to P2 [7s 2d]
+P3 folds
+v1 wins the pot (3)
+
+Hand #25, P2 (0), P3 (418), v1 (182)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [4s 3d]
+Dealt to P3 [Qd 2h]
+Dealt to v1 [7h 5d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #26, v1 (181), P2 (0), P3 (419)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [7d 8c]
+Dealt to P2 [6c Qh]
+Dealt to P3 [7c Kc]
+P3 folds
+v1 wins the pot (3)
+
+Hand #27, P3 (418), v1 (182), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [3s 5d]
+Dealt to v1 [2d Js]
+Dealt to P2 [6s 7d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #28, P2 (0), P3 (419), v1 (181)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Ah 8c]
+Dealt to P3 [Jd Td]
+Dealt to v1 [8s Jh]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #29, v1 (179), P2 (0), P3 (421)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [2s Qs]
+Dealt to P2 [7d 5h]
+Dealt to P3 [6s Qh]
+v1 folds
+P3 wins the pot (3)
+
+Hand #30, P3 (422), v1 (178), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [3s 7s]
+Dealt to v1 [7c 5s]
+Dealt to P2 [2d 3h]
+P3 folds
+v1 wins the pot (3)
+
+Hand #31, P2 (0), P3 (421), v1 (179)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [8h 7d]
+Dealt to P3 [Qc 3s]
+Dealt to v1 [As 5h]
+v1 folds
+P3 wins the pot (3)
+
+Hand #32, v1 (178), P2 (0), P3 (422)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [8c 3c]
+Dealt to P2 [Th Ks]
+Dealt to P3 [6s 5h]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [7d As Ac]
+v1 checks
+P3 checks
+*** TURN *** (4) [7d As Ac] [4s]
+v1 checks
+P3 checks
+*** RIVER *** (4) [7d As Ac 4s] [3h]
+v1 checks
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #33, P3 (424), v1 (176), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [5d Jh]
+Dealt to v1 [4c Jc]
+Dealt to P2 [7d 6d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #34, P2 (0), P3 (425), v1 (175)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [7s Jd]
+Dealt to P3 [Qh As]
+Dealt to v1 [Jc Th]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [Td 9d Ad]
+v1 checks
+P3 bets 2
+v1 folds
+P3 wins the pot (6)
+
+Hand #35, v1 (173), P2 (0), P3 (427)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [Kd 4d]
+Dealt to P2 [6s 4h]
+Dealt to P3 [8s As]
+v1 folds
+P3 wins the pot (3)
+
+Hand #36, P3 (428), v1 (172), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [5c 2h]
+Dealt to v1 [Td Js]
+Dealt to P2 [9h 7c]
+P3 folds
+v1 wins the pot (3)
+
+Hand #37, P2 (0), P3 (427), v1 (173)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [4d Qs]
+Dealt to P3 [6c Js]
+Dealt to v1 [As 7h]
+v1 folds
+P3 wins the pot (3)
+
+Hand #38, v1 (172), P2 (0), P3 (428)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [Js 8d]
+Dealt to P2 [6s 2h]
+Dealt to P3 [Jh Td]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [5s 6h 8c]
+v1 checks
+P3 checks
+*** TURN *** (4) [5s 6h 8c] [Ts]
+v1 checks
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #39, P3 (430), v1 (170), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [Kc 5d]
+Dealt to v1 [Jh 9s]
+Dealt to P2 [2s Ad]
+v1 folds
+P3 wins the pot (3)
+
+Hand #40, P2 (0), P3 (431), v1 (169)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Qh As]
+Dealt to P3 [Qd 2d]
+Dealt to v1 [8s 8c]
+P3 folds
+v1 wins the pot (3)
+
+Hand #41, v1 (170), P2 (0), P3 (430)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [5h Kc]
+Dealt to P2 [Jd Qh]
+Dealt to P3 [4s 6c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #42, P3 (431), v1 (169), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [Qc 7h]
+Dealt to v1 [Jc 9s]
+Dealt to P2 [2c 6s]
+P3 folds
+v1 wins the pot (3)
+
+Hand #43, P2 (0), P3 (430), v1 (170)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [2c Ks]
+Dealt to P3 [Ah 5h]
+Dealt to v1 [Kc Kd]
+v1 folds
+P3 wins the pot (3)
+
+Hand #44, v1 (169), P2 (0), P3 (431)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [4c 8d]
+Dealt to P2 [6h 5c]
+Dealt to P3 [Qs Kc]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [5d 6s Qc]
+v1 checks
+P3 bets 2
+v1 folds
+P3 wins the pot (6)
+
+Hand #45, P3 (433), v1 (167), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [6c Jd]
+Dealt to v1 [9c Qc]
+Dealt to P2 [3s 4s]
+v1 folds
+P3 wins the pot (3)
+
+Hand #46, P2 (0), P3 (434), v1 (166)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [3c 5d]
+Dealt to P3 [9s 2d]
+Dealt to v1 [Ts 9h]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #47, v1 (164), P2 (0), P3 (436)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [7h 3d]
+Dealt to P2 [4d Ah]
+Dealt to P3 [Tc 6s]
+v1 folds
+P3 wins the pot (3)
+
+Hand #48, P3 (437), v1 (163), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [4s 7s]
+Dealt to v1 [9d Qh]
+Dealt to P2 [3s 8s]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [2c Qd 9h]
+v1 checks
+P3 bets 2
+v1 folds
+P3 wins the pot (6)
+
+Hand #49, P2 (0), P3 (439), v1 (161)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [3d 3s]
+Dealt to P3 [Ad Td]
+Dealt to v1 [8c 2h]
+v1 folds
+P3 wins the pot (3)
+
+Hand #50, v1 (160), P2 (0), P3 (440)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [9d As]
+Dealt to P2 [8c 8s]
+Dealt to P3 [6d Ts]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #51, P3 (442), v1 (158), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [8h 5c]
+Dealt to v1 [Ac Jd]
+Dealt to P2 [5d Th]
+v1 folds
+P3 wins the pot (3)
+
+Hand #52, P2 (0), P3 (443), v1 (157)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [8d 9s]
+Dealt to P3 [3d 2d]
+Dealt to v1 [4d Ad]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [Qh 6c Kd]
+v1 checks
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #53, v1 (155), P2 (0), P3 (445)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [6d Kc]
+Dealt to P2 [6h 8h]
+Dealt to P3 [3c Qh]
+v1 folds
+P3 wins the pot (3)
+
+Hand #54, P3 (446), v1 (154), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [5d 2d]
+Dealt to v1 [6d 8h]
+Dealt to P2 [Ac 4h]
+P3 folds
+v1 wins the pot (3)
+
+Hand #55, P2 (0), P3 (445), v1 (155)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [Jc 3h]
+Dealt to P3 [Ts 7d]
+Dealt to v1 [3s 6c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #56, v1 (154), P2 (0), P3 (446)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [Ad 5d]
+Dealt to P2 [Ts 6s]
+Dealt to P3 [Th 2h]
+P3 folds
+v1 wins the pot (3)
+
+Hand #57, P3 (445), v1 (155), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [Js 7c]
+Dealt to v1 [Ah 9s]
+Dealt to P2 [4s Qs]
+v1 folds
+P3 wins the pot (3)
+
+Hand #58, P2 (0), P3 (446), v1 (154)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [7s 6d]
+Dealt to P3 [7h Ts]
+Dealt to v1 [7d Th]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #59, v1 (152), P2 (0), P3 (448)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [7h 8h]
+Dealt to P2 [Ks Jd]
+Dealt to P3 [9c 6d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #60, P3 (449), v1 (151), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [Ac 8s]
+Dealt to v1 [6s 2s]
+Dealt to P2 [Kh 3h]
+P3 folds
+v1 wins the pot (3)
+
+Hand #61, P2 (0), P3 (448), v1 (152)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [Ad Ks]
+Dealt to P3 [Ac Qd]
+Dealt to v1 [9s Jh]
+v1 folds
+P3 wins the pot (3)
+
+Hand #62, v1 (151), P2 (0), P3 (449)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [8c As]
+Dealt to P2 [2d Jd]
+Dealt to P3 [5h 9h]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [8h 4c 7c]
+v1 checks
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #63, P3 (451), v1 (149), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [7c 6d]
+Dealt to v1 [6h Ts]
+Dealt to P2 [3d Jd]
+v1 folds
+P3 wins the pot (3)
+
+Hand #64, P2 (0), P3 (452), v1 (148)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [5s Qc]
+Dealt to P3 [4c 9d]
+Dealt to v1 [Kh Ah]
+P3 folds
+v1 wins the pot (3)
+
+Hand #65, v1 (149), P2 (0), P3 (451)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [3s 2d]
+Dealt to P2 [Jd 5h]
+Dealt to P3 [4h 3d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #66, P3 (452), v1 (148), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [6c 5c]
+Dealt to v1 [Ah 8s]
+Dealt to P2 [9h Td]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [Ts 2d Ad]
+v1 checks
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #67, P2 (0), P3 (454), v1 (146)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [4d 4c]
+Dealt to P3 [5h 5c]
+Dealt to v1 [4h 4s]
+v1 folds
+P3 wins the pot (3)
+
+Hand #68, v1 (145), P2 (0), P3 (455)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [2h 4d]
+Dealt to P2 [Ac 4h]
+Dealt to P3 [7h Ks]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #69, P3 (457), v1 (143), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [7h Kh]
+Dealt to v1 [5d 6s]
+Dealt to P2 [5h Tc]
+v1 folds
+P3 wins the pot (3)
+
+Hand #70, P2 (0), P3 (458), v1 (142)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [8d Ac]
+Dealt to P3 [Kh Qh]
+Dealt to v1 [Td Ks]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [2h 3d 2s]
+v1 checks
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #71, v1 (140), P2 (0), P3 (460)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [5s 9d]
+Dealt to P2 [7h 3d]
+Dealt to P3 [8c 9h]
+v1 folds
+P3 wins the pot (3)
+
+Hand #72, P3 (461), v1 (139), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [9d 6d]
+Dealt to v1 [Ad Jh]
+Dealt to P2 [Qh Jc]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #73, P2 (0), P3 (463), v1 (137)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [7h Ah]
+Dealt to P3 [5h Kh]
+Dealt to v1 [4d 5s]
+v1 folds
+P3 wins the pot (3)
+
+Hand #74, v1 (136), P2 (0), P3 (464)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [2s 9c]
+Dealt to P2 [As 5c]
+Dealt to P3 [5d Qc]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #75, P3 (466), v1 (134), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [9h 2c]
+Dealt to v1 [4d Qc]
+Dealt to P2 [6s Qs]
+v1 folds
+P3 wins the pot (3)
+
+Hand #76, P2 (0), P3 (467), v1 (133)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Qd Tc]
+Dealt to P3 [8h 9d]
+Dealt to v1 [Jd As]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [Ah 4c 4h]
+v1 checks
+P3 checks
+*** TURN *** (4) [Ah 4c 4h] [9h]
+v1 checks
+P3 bets 2
+v1 folds
+P3 wins the pot (6)
+
+Hand #77, v1 (131), P2 (0), P3 (469)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [Kd 3d]
+Dealt to P2 [9c 4d]
+Dealt to P3 [Kh 6d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #78, P3 (470), v1 (130), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [Ah 7h]
+Dealt to v1 [2d 4c]
+Dealt to P2 [4s 7c]
+P3 folds
+v1 wins the pot (3)
+
+Hand #79, P2 (0), P3 (469), v1 (131)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [Jd 4d]
+Dealt to P3 [2d 5c]
+Dealt to v1 [7s Qh]
+v1 folds
+P3 wins the pot (3)
+
+Hand #80, v1 (130), P2 (0), P3 (470)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [Ah Jd]
+Dealt to P2 [5s Td]
+Dealt to P3 [3s 4h]
+P3 folds
+v1 wins the pot (3)
+
+Hand #81, P3 (469), v1 (131), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [2h Qd]
+Dealt to v1 [Tc Kd]
+Dealt to P2 [5h 9c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #82, P2 (0), P3 (470), v1 (130)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [3c 2h]
+Dealt to P3 [6d 2c]
+Dealt to v1 [5c 9s]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [Th 8d 7c]
+v1 checks
+P3 checks
+*** TURN *** (4) [Th 8d 7c] [Qd]
+v1 checks
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #83, v1 (128), P2 (0), P3 (472)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [7c Kc]
+Dealt to P2 [8s Jc]
+Dealt to P3 [4h 9d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #84, P3 (473), v1 (127), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [6h 3s]
+Dealt to v1 [Kc 2s]
+Dealt to P2 [2d 9c]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #85, P2 (0), P3 (475), v1 (125)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [Qs 7s]
+Dealt to P3 [Td Kh]
+Dealt to v1 [5c 5s]
+v1 folds
+P3 wins the pot (3)
+
+Hand #86, v1 (124), P2 (0), P3 (476)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [2h Kd]
+Dealt to P2 [7c 5s]
+Dealt to P3 [6h Qh]
+P3 folds
+v1 wins the pot (3)
+
+Hand #87, P3 (475), v1 (125), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [4d 2h]
+Dealt to v1 [Js Td]
+Dealt to P2 [Tc Qc]
+v1 folds
+P3 wins the pot (3)
+
+Hand #88, P2 (0), P3 (476), v1 (124)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [6h Ad]
+Dealt to P3 [2c 2h]
+Dealt to v1 [8d Jc]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [8c 5s 6c]
+v1 checks
+P3 checks
+*** TURN *** (4) [8c 5s 6c] [5h]
+v1 checks
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #89, v1 (122), P2 (0), P3 (478)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [2h 9s]
+Dealt to P2 [Kc 5c]
+Dealt to P3 [2s 8c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #90, P3 (479), v1 (121), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [8s 4c]
+Dealt to v1 [Ac 7s]
+Dealt to P2 [Qc 9h]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [4d 2d Jd]
+v1 checks
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #91, P2 (0), P3 (481), v1 (119)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [7h Qh]
+Dealt to P3 [2h Ac]
+Dealt to v1 [5c 5s]
+v1 folds
+P3 wins the pot (3)
+
+Hand #92, v1 (118), P2 (0), P3 (482)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [6d Qh]
+Dealt to P2 [Tc 3s]
+Dealt to P3 [8s 6s]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [5s Ac 6c]
+v1 checks
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #93, P3 (484), v1 (116), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [2h As]
+Dealt to v1 [3c Td]
+Dealt to P2 [7c 7d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #94, P2 (0), P3 (485), v1 (115)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Ts 6h]
+Dealt to P3 [7s Ac]
+Dealt to v1 [4h Jd]
+P3 folds
+v1 wins the pot (3)
+
+Hand #95, v1 (116), P2 (0), P3 (484)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [Jh 5s]
+Dealt to P2 [Td 9c]
+Dealt to P3 [Kd 3c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #96, P3 (485), v1 (115), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [Jh Kd]
+Dealt to v1 [6d 5s]
+Dealt to P2 [7s 6s]
+P3 folds
+v1 wins the pot (3)
+
+Hand #97, P2 (0), P3 (484), v1 (116)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [7c Kd]
+Dealt to P3 [6d 5c]
+Dealt to v1 [6h 4c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #98, v1 (115), P2 (0), P3 (485)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [Kh 4c]
+Dealt to P2 [7c Qc]
+Dealt to P3 [Qd 9s]
+P3 folds
+v1 wins the pot (3)
+
+Hand #99, P3 (484), v1 (116), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [Qs 9h]
+Dealt to v1 [Ts Js]
+Dealt to P2 [Kc 5d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #100, P2 (0), P3 (485), v1 (115)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Qh 9h]
+Dealt to P3 [Jd 3s]
+Dealt to v1 [2h 3c]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #101, v1 (113), P2 (0), P3 (487)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [As Ks]
+Dealt to P2 [9c 7c]
+Dealt to P3 [5s Js]
+v1 folds
+P3 wins the pot (3)
+
+Hand #102, P3 (488), v1 (112), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [Js 5c]
+Dealt to v1 [7d Ah]
+Dealt to P2 [6c Ks]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #103, P2 (0), P3 (490), v1 (110)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [Kh 3d]
+Dealt to P3 [Jh Kd]
+Dealt to v1 [2c Qc]
+v1 folds
+P3 wins the pot (3)
+
+Hand #104, v1 (109), P2 (0), P3 (491)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [8s 8c]
+Dealt to P2 [Tc Ad]
+Dealt to P3 [8h 7d]
+P3 folds
+v1 wins the pot (3)
+
+Hand #105, P3 (490), v1 (110), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [Jh 3h]
+Dealt to v1 [8c 8d]
+Dealt to P2 [Qc 6c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #106, P2 (0), P3 (491), v1 (109)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Qh 9h]
+Dealt to P3 [Ad 3s]
+Dealt to v1 [9c Js]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [7h 7d Th]
+v1 checks
+P3 checks
+*** TURN *** (4) [7h 7d Th] [3h]
+v1 checks
+P3 checks
+*** RIVER *** (4) [7h 7d Th 3h] [6d]
+v1 checks
+P3 checks
+P3 shows [Ad 3s]
+v1 shows [9c Js]
+P3 wins the pot (4)
+
+Hand #107, v1 (107), P2 (0), P3 (493)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [6s Kc]
+Dealt to P2 [Kd Ks]
+Dealt to P3 [4c 5c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #108, P3 (494), v1 (106), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [Ad 7h]
+Dealt to v1 [3s Kh]
+Dealt to P2 [5c Jh]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #109, P2 (0), P3 (496), v1 (104)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [6d 9d]
+Dealt to P3 [4s 7s]
+Dealt to v1 [Qh 3d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #110, v1 (103), P2 (0), P3 (497)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [4d Ts]
+Dealt to P2 [3d 9h]
+Dealt to P3 [Js Kh]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [Tc 2d 8d]
+v1 checks
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #111, P3 (499), v1 (101), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [8d 7s]
+Dealt to v1 [Ad As]
+Dealt to P2 [Kh 4d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #112, P2 (0), P3 (500), v1 (100)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Js 9d]
+Dealt to P3 [5h 5s]
+Dealt to v1 [6d 3s]
+P3 folds
+v1 wins the pot (3)
+
+Hand #113, v1 (101), P2 (0), P3 (499)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [8c Kc]
+Dealt to P2 [7s 7c]
+Dealt to P3 [4h Ks]
+v1 folds
+P3 wins the pot (3)
+
+Hand #114, P3 (500), v1 (100), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [Qc 4d]
+Dealt to v1 [7h 2s]
+Dealt to P2 [Js Qh]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [6d Ac 8s]
+v1 checks
+P3 checks
+*** TURN *** (4) [6d Ac 8s] [Td]
+v1 checks
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #115, P2 (0), P3 (502), v1 (98)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [5d 8c]
+Dealt to P3 [Jd Jh]
+Dealt to v1 [6s Qd]
+v1 folds
+P3 wins the pot (3)
+
+Hand #116, v1 (97), P2 (0), P3 (503)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [6h 5h]
+Dealt to P2 [2s 5c]
+Dealt to P3 [2h 7d]
+P3 folds
+v1 wins the pot (3)
+
+Hand #117, P3 (502), v1 (98), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [5s 3d]
+Dealt to v1 [Qh 8h]
+Dealt to P2 [6s 2c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #118, P2 (0), P3 (503), v1 (97)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Jc Jd]
+Dealt to P3 [7h Kd]
+Dealt to v1 [Js 2d]
+P3 folds
+v1 wins the pot (3)
+
+Hand #119, v1 (98), P2 (0), P3 (502)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [2d 6c]
+Dealt to P2 [7s Ad]
+Dealt to P3 [Js Jd]
+v1 folds
+P3 wins the pot (3)
+
+Hand #120, P3 (503), v1 (97), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [8s 9d]
+Dealt to v1 [Td 8h]
+Dealt to P2 [Jd 9s]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [Jc 7s 5c]
+v1 checks
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #121, P2 (0), P3 (505), v1 (95)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [3s 9d]
+Dealt to P3 [Kh Ks]
+Dealt to v1 [9c 3h]
+v1 folds
+P3 wins the pot (3)
+
+Hand #122, v1 (94), P2 (0), P3 (506)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [7h 8d]
+Dealt to P2 [6c Jc]
+Dealt to P3 [Td 9s]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [6s 3c Jh]
+v1 checks
+P3 bets 2
+v1 folds
+P3 wins the pot (6)
+
+Hand #123, P3 (508), v1 (92), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [7c Kc]
+Dealt to v1 [6d Ah]
+Dealt to P2 [Td 7s]
+v1 folds
+P3 wins the pot (3)
+
+Hand #124, P2 (0), P3 (509), v1 (91)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [4s Jh]
+Dealt to P3 [7h 5d]
+Dealt to v1 [Kd Td]
+P3 folds
+v1 wins the pot (3)
+
+Hand #125, v1 (92), P2 (0), P3 (508)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [Ts Qd]
+Dealt to P2 [Ks 3c]
+Dealt to P3 [Js 4h]
+v1 folds
+P3 wins the pot (3)
+
+Hand #126, P3 (509), v1 (91), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [4d 2s]
+Dealt to v1 [Th Ts]
+Dealt to P2 [Kc 9h]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [9c Js Jh]
+v1 checks
+P3 checks
+*** TURN *** (4) [9c Js Jh] [9d]
+v1 checks
+P3 bets 2
+v1 folds
+P3 wins the pot (6)
+
+Hand #127, P2 (0), P3 (511), v1 (89)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [5h Jd]
+Dealt to P3 [5s 9h]
+Dealt to v1 [Qs 8c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #128, v1 (88), P2 (0), P3 (512)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [Th 5c]
+Dealt to P2 [4d 8d]
+Dealt to P3 [Kc 9d]
+P3 folds
+v1 wins the pot (3)
+
+Hand #129, P3 (511), v1 (89), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [2s 5d]
+Dealt to v1 [6s 4d]
+Dealt to P2 [Ac 9d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #130, P2 (0), P3 (512), v1 (88)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Ks 9s]
+Dealt to P3 [6s 9c]
+Dealt to v1 [Kh 8h]
+P3 folds
+v1 wins the pot (3)
+
+Hand #131, v1 (89), P2 (0), P3 (511)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [3d 6h]
+Dealt to P2 [9d 3h]
+Dealt to P3 [5c As]
+v1 folds
+P3 wins the pot (3)
+
+Hand #132, P3 (512), v1 (88), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [Jd Qs]
+Dealt to v1 [4s 7s]
+Dealt to P2 [Td 7c]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [2c 6c 3c]
+v1 checks
+P3 bets 2
+v1 folds
+P3 wins the pot (6)
+
+Hand #133, P2 (0), P3 (514), v1 (86)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [4h Qs]
+Dealt to P3 [9d 4d]
+Dealt to v1 [Kc Qd]
+v1 folds
+P3 wins the pot (3)
+
+Hand #134, v1 (85), P2 (0), P3 (515)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [8s 6d]
+Dealt to P2 [3s 4s]
+Dealt to P3 [3h 8d]
+P3 folds
+v1 wins the pot (3)
+
+Hand #135, P3 (514), v1 (86), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [7s 9s]
+Dealt to v1 [7d As]
+Dealt to P2 [4c 7c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #136, P2 (0), P3 (515), v1 (85)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Ts 4s]
+Dealt to P3 [9h 9d]
+Dealt to v1 [Js 6c]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #137, v1 (83), P2 (0), P3 (517)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [3c 4s]
+Dealt to P2 [4c 7h]
+Dealt to P3 [7s Qs]
+v1 folds
+P3 wins the pot (3)
+
+Hand #138, P3 (518), v1 (82), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [Ks 6s]
+Dealt to v1 [Qd 5s]
+Dealt to P2 [5d 8s]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #139, P2 (0), P3 (520), v1 (80)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [8d Kc]
+Dealt to P3 [Js Tc]
+Dealt to v1 [8h 5s]
+v1 folds
+P3 wins the pot (3)
+
+Hand #140, v1 (79), P2 (0), P3 (521)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [Ac 5s]
+Dealt to P2 [Ts 9d]
+Dealt to P3 [2s 9s]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #141, P3 (523), v1 (77), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [4c 4s]
+Dealt to v1 [3c Ac]
+Dealt to P2 [2d 7h]
+v1 folds
+P3 wins the pot (3)
+
+Hand #142, P2 (0), P3 (524), v1 (76)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [9c 2d]
+Dealt to P3 [4d 6s]
+Dealt to v1 [5h Ks]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #143, v1 (74), P2 (0), P3 (526)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [6c 4s]
+Dealt to P2 [7d Td]
+Dealt to P3 [2d 5c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #144, P3 (527), v1 (73), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [4h Jd]
+Dealt to v1 [9c 2d]
+Dealt to P2 [5c 2s]
+P3 folds
+v1 wins the pot (3)
+
+Hand #145, P2 (0), P3 (526), v1 (74)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [Kh Qs]
+Dealt to P3 [Kd Td]
+Dealt to v1 [5s 6d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #146, v1 (73), P2 (0), P3 (527)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [Ad 7h]
+Dealt to P2 [Qd 8s]
+Dealt to P3 [5c Qh]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #147, P3 (529), v1 (71), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [4d 9d]
+Dealt to v1 [Ah 2h]
+Dealt to P2 [6c 5d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #148, P2 (0), P3 (530), v1 (70)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Kh Ks]
+Dealt to P3 [As 9h]
+Dealt to v1 [4s 6s]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [4d 9c 5s]
+v1 checks
+P3 checks
+*** TURN *** (4) [4d 9c 5s] [Ad]
+v1 checks
+P3 checks
+*** RIVER *** (4) [4d 9c 5s Ad] [7c]
+v1 checks
+P3 bets 2
+v1 folds
+P3 wins the pot (6)
+
+Hand #149, v1 (68), P2 (0), P3 (532)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [Jd Ac]
+Dealt to P2 [5c Kh]
+Dealt to P3 [Qs 9d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #150, P3 (533), v1 (67), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [2d 8d]
+Dealt to v1 [Jc 7s]
+Dealt to P2 [9d 6c]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #151, P2 (0), P3 (535), v1 (65)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [Jc 6h]
+Dealt to P3 [8c 2s]
+Dealt to v1 [5h 4c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #152, v1 (64), P2 (0), P3 (536)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [Td Qc]
+Dealt to P2 [9d 8s]
+Dealt to P3 [2s Qh]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #153, P3 (538), v1 (62), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [3h 7d]
+Dealt to v1 [6d 7h]
+Dealt to P2 [Kc 7s]
+v1 folds
+P3 wins the pot (3)
+
+Hand #154, P2 (0), P3 (539), v1 (61)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [9s 6d]
+Dealt to P3 [7s 8s]
+Dealt to v1 [Jc Kc]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #155, v1 (59), P2 (0), P3 (541)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [3d Ks]
+Dealt to P2 [4c 9d]
+Dealt to P3 [2s 8d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #156, P3 (542), v1 (58), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [Ac 9s]
+Dealt to v1 [2s Jc]
+Dealt to P2 [Qh 9c]
+P3 folds
+v1 wins the pot (3)
+
+Hand #157, P2 (0), P3 (541), v1 (59)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [3h 6s]
+Dealt to P3 [3d 5s]
+Dealt to v1 [3c 7c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #158, v1 (58), P2 (0), P3 (542)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [As 9d]
+Dealt to P2 [Ac 6s]
+Dealt to P3 [Qh 2s]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [9c 7d 3c]
+v1 checks
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #159, P3 (544), v1 (56), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [Jh Ad]
+Dealt to v1 [8d 3d]
+Dealt to P2 [Ks Ac]
+v1 folds
+P3 wins the pot (3)
+
+Hand #160, P2 (0), P3 (545), v1 (55)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Ad 9c]
+Dealt to P3 [Qh 8d]
+Dealt to v1 [Qs 2c]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #161, v1 (53), P2 (0), P3 (547)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [6d 5h]
+Dealt to P2 [Qh Ks]
+Dealt to P3 [9d 8d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #162, P3 (548), v1 (52), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [6h 6c]
+Dealt to v1 [Ad 3h]
+Dealt to P2 [7c 9s]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #163, P2 (0), P3 (550), v1 (50)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [6h 4d]
+Dealt to P3 [Js Kh]
+Dealt to v1 [6s 4s]
+v1 folds
+P3 wins the pot (3)
+
+Hand #164, v1 (49), P2 (0), P3 (551)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [5c 3d]
+Dealt to P2 [2d Td]
+Dealt to P3 [2h As]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [Ac 6c 3s]
+v1 checks
+P3 bets 2
+v1 folds
+P3 wins the pot (6)
+
+Hand #165, P3 (553), v1 (47), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [8d 3h]
+Dealt to v1 [Qh Th]
+Dealt to P2 [5c 3s]
+v1 folds
+P3 wins the pot (3)
+
+Hand #166, P2 (0), P3 (554), v1 (46)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [8h Ah]
+Dealt to P3 [6d 8s]
+Dealt to v1 [Ad 5c]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [Qh 7d Td]
+v1 checks
+P3 checks
+*** TURN *** (4) [Qh 7d Td] [3c]
+v1 checks
+P3 checks
+*** RIVER *** (4) [Qh 7d Td 3c] [2d]
+v1 checks
+P3 checks
+P3 shows [6d 8s]
+v1 shows [Ad 5c]
+v1 wins the pot (4)
+
+Hand #167, v1 (48), P2 (0), P3 (552)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [2s 8c]
+Dealt to P2 [Js Qs]
+Dealt to P3 [2h 6d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #168, P3 (553), v1 (47), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [4h 9c]
+Dealt to v1 [5s 7d]
+Dealt to P2 [Ts Qd]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #169, P2 (0), P3 (555), v1 (45)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [9h As]
+Dealt to P3 [Kh Ad]
+Dealt to v1 [5s Ah]
+v1 folds
+P3 wins the pot (3)
+
+Hand #170, v1 (44), P2 (0), P3 (556)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [5s Js]
+Dealt to P2 [Ts Jd]
+Dealt to P3 [Qd 3s]
+P3 folds
+v1 wins the pot (3)
+
+Hand #171, P3 (555), v1 (45), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [Js Tc]
+Dealt to v1 [3c Kh]
+Dealt to P2 [Ks 4s]
+v1 folds
+P3 wins the pot (3)
+
+Hand #172, P2 (0), P3 (556), v1 (44)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Qs 5h]
+Dealt to P3 [9s 4d]
+Dealt to v1 [7c 6d]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #173, v1 (42), P2 (0), P3 (558)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [Qc 2h]
+Dealt to P2 [7d Ts]
+Dealt to P3 [5d Qs]
+v1 folds
+P3 wins the pot (3)
+
+Hand #174, P3 (559), v1 (41), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [As 4s]
+Dealt to v1 [Jc 3s]
+Dealt to P2 [9h 7d]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [6s Td 3d]
+v1 checks
+P3 checks
+*** TURN *** (4) [6s Td 3d] [2d]
+v1 checks
+P3 checks
+*** RIVER *** (4) [6s Td 3d 2d] [8d]
+v1 checks
+P3 bets 2
+v1 folds
+P3 wins the pot (6)
+
+Hand #175, P2 (0), P3 (561), v1 (39)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [7s Ks]
+Dealt to P3 [Qh 2s]
+Dealt to v1 [6d Jd]
+v1 folds
+P3 wins the pot (3)
+
+Hand #176, v1 (38), P2 (0), P3 (562)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [5c 8d]
+Dealt to P2 [2s Kd]
+Dealt to P3 [7h 3s]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #177, P3 (564), v1 (36), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [3c Ts]
+Dealt to v1 [Jh 2s]
+Dealt to P2 [7h 7c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #178, P2 (0), P3 (565), v1 (35)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Qc 4d]
+Dealt to P3 [Qs 8s]
+Dealt to v1 [Jh 4h]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [Ad 7d 5h]
+v1 checks
+P3 checks
+*** TURN *** (4) [Ad 7d 5h] [Qh]
+v1 checks
+P3 bets 2
+v1 folds
+P3 wins the pot (6)
+
+Hand #179, v1 (33), P2 (0), P3 (567)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [2h Jc]
+Dealt to P2 [Ts Jh]
+Dealt to P3 [4d Jd]
+v1 folds
+P3 wins the pot (3)
+
+Hand #180, P3 (568), v1 (32), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [3c 4h]
+Dealt to v1 [Js 9h]
+Dealt to P2 [Kd 5d]
+P3 folds
+v1 wins the pot (3)
+
+Hand #181, P2 (0), P3 (567), v1 (33)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [Jh 4h]
+Dealt to P3 [Qc Ts]
+Dealt to v1 [As 8d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #182, v1 (32), P2 (0), P3 (568)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [6s Th]
+Dealt to P2 [Jh 5d]
+Dealt to P3 [Ks 7d]
+P3 raises to 4
+v1 folds
+P3 wins the pot (6)
+
+Hand #183, P3 (570), v1 (30), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [Td 2d]
+Dealt to v1 [3s 3d]
+Dealt to P2 [5s 6s]
+v1 folds
+P3 wins the pot (3)
+
+Hand #184, P2 (0), P3 (571), v1 (29)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Jc 2c]
+Dealt to P3 [2s 6c]
+Dealt to v1 [Js Kc]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #185, v1 (27), P2 (0), P3 (573)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [6s 5d]
+Dealt to P2 [6d 2s]
+Dealt to P3 [4s Ah]
+v1 folds
+P3 wins the pot (3)
+
+Hand #186, P3 (574), v1 (26), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [6c 3c]
+Dealt to v1 [Ah Td]
+Dealt to P2 [9c Ts]
+P3 folds
+v1 wins the pot (3)
+
+Hand #187, P2 (0), P3 (573), v1 (27)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [3d 6c]
+Dealt to P3 [8d 6d]
+Dealt to v1 [Kh 3h]
+v1 folds
+P3 wins the pot (3)
+
+Hand #188, v1 (26), P2 (0), P3 (574)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [Ac 2s]
+Dealt to P2 [3c Tc]
+Dealt to P3 [2c Ad]
+P3 folds
+v1 wins the pot (3)
+
+Hand #189, P3 (573), v1 (27), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [Ah As]
+Dealt to v1 [Jd 8s]
+Dealt to P2 [Ac Qd]
+v1 folds
+P3 wins the pot (3)
+
+Hand #190, P2 (0), P3 (574), v1 (26)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Qd 4s]
+Dealt to P3 [7c Kh]
+Dealt to v1 [6h 3s]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [Jd Qc Ah]
+v1 checks
+P3 bets 2
+v1 folds
+P3 wins the pot (6)
+
+Hand #191, v1 (24), P2 (0), P3 (576)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [8h 9h]
+Dealt to P2 [3d Ts]
+Dealt to P3 [Qd Qs]
+v1 folds
+P3 wins the pot (3)
+
+Hand #192, P3 (577), v1 (23), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [8s 7c]
+Dealt to v1 [Ks Jd]
+Dealt to P2 [Kh 4h]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #193, P2 (0), P3 (579), v1 (21)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [As Ac]
+Dealt to P3 [8c 7s]
+Dealt to v1 [6c 8d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #194, v1 (20), P2 (0), P3 (580)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [3h 5s]
+Dealt to P2 [6s Ad]
+Dealt to P3 [9c 9s]
+P3 folds
+v1 wins the pot (3)
+
+Hand #195, P3 (579), v1 (21), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [6c 3s]
+Dealt to v1 [9d 8d]
+Dealt to P2 [4c 7d]
+v1 folds
+P3 wins the pot (3)
+
+Hand #196, P2 (0), P3 (580), v1 (20)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [6h 3h]
+Dealt to P3 [Jd Ks]
+Dealt to v1 [Tc 3s]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [7d Js 5h]
+v1 checks
+P3 bets 2
+v1 folds
+P3 wins the pot (6)
+
+Hand #197, v1 (18), P2 (0), P3 (582)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [7d 7c]
+Dealt to P2 [3d Ah]
+Dealt to P3 [Kh 3c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #198, P3 (583), v1 (17), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [Qs 4s]
+Dealt to v1 [4h Js]
+Dealt to P2 [9h Ah]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #199, P2 (0), P3 (585), v1 (15)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [Ts 2d]
+Dealt to P3 [5c Kh]
+Dealt to v1 [9d 6s]
+v1 folds
+P3 wins the pot (3)
+
+Hand #200, v1 (14), P2 (0), P3 (586)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [2c Kh]
+Dealt to P2 [9h 8c]
+Dealt to P3 [5d 4s]
+P3 folds
+v1 wins the pot (3)
+
+Hand #201, P3 (585), v1 (15), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [Kh Jh]
+Dealt to v1 [9h Td]
+Dealt to P2 [3h Jd]
+v1 folds
+P3 wins the pot (3)
+
+Hand #202, P2 (0), P3 (586), v1 (14)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [2s Ah]
+Dealt to P3 [6c 5s]
+Dealt to v1 [8c 8h]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [Jd 9c As]
+v1 checks
+P3 checks
+*** TURN *** (4) [Jd 9c As] [3d]
+v1 checks
+P3 checks
+*** RIVER *** (4) [Jd 9c As 3d] [Kd]
+v1 checks
+P3 checks
+P3 shows [6c 5s]
+v1 shows [8c 8h]
+v1 wins the pot (4)
+
+Hand #203, v1 (16), P2 (0), P3 (584)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [9s 6c]
+Dealt to P2 [Jc 2c]
+Dealt to P3 [3d 7h]
+v1 folds
+P3 wins the pot (3)
+
+Hand #204, P3 (585), v1 (15), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [7h 2s]
+Dealt to v1 [Ts 9s]
+Dealt to P2 [5c 9h]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [4d Qs 5d]
+v1 checks
+P3 bets 3
+v1 folds
+P3 wins the pot (7)
+
+Hand #205, P2 (0), P3 (587), v1 (13)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [9c 9d]
+Dealt to P3 [Ts Qh]
+Dealt to v1 [3s 4c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #206, v1 (12), P2 (0), P3 (588)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [2s 2c]
+Dealt to P2 [7c 8c]
+Dealt to P3 [Ks 5h]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #207, P3 (590), v1 (10), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [Th 9h]
+Dealt to v1 [5c Qh]
+Dealt to P2 [7c Kd]
+v1 folds
+P3 wins the pot (3)
+
+Hand #208, P2 (0), P3 (591), v1 (9)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [8c Ts]
+Dealt to P3 [Kh Qc]
+Dealt to v1 [5s 5d]
+P3 calls 2
+v1 checks
+*** FLOP *** (4) [Qs 7c 4c]
+v1 checks
+P3 checks
+*** TURN *** (4) [Qs 7c 4c] [Kc]
+v1 checks
+P3 bets 2
+v1 folds
+P3 wins the pot (6)
+
+Hand #209, v1 (7), P2 (0), P3 (593)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [Th Kc]
+Dealt to P2 [5d 6s]
+Dealt to P3 [Ah 6c]
+v1 folds
+P3 wins the pot (3)
+
+Hand #210, P3 (594), v1 (6), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [5c Kd]
+Dealt to v1 [7s 4s]
+Dealt to P2 [Kh Td]
+P3 raises to 5
+v1 folds
+P3 wins the pot (7)
+
+Hand #211, P2 (0), P3 (596), v1 (4)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [Qd 8s]
+Dealt to P3 [7h 3h]
+Dealt to v1 [7s Kh]
+v1 folds
+P3 wins the pot (3)
+
+Hand #212, v1 (3), P2 (0), P3 (597)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [4d Ad]
+Dealt to P2 [Qh Ac]
+Dealt to P3 [Kc Ts]
+P3 folds
+v1 wins the pot (3)
+
+Hand #213, P3 (596), v1 (4), P2 (0)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P3 [2c Qs]
+Dealt to v1 [4c 3h]
+Dealt to P2 [Jc Js]
+v1 folds
+P3 wins the pot (3)
+
+Hand #214, P2 (0), P3 (597), v1 (3)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P2 [Qd 4d]
+Dealt to P3 [Th 2h]
+Dealt to v1 [Tc Qc]
+P3 folds
+v1 wins the pot (3)
+
+Hand #215, v1 (4), P2 (0), P3 (596)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to v1 [As 6h]
+Dealt to P2 [3s 2s]
+Dealt to P3 [4d 8s]
+v1 folds
+P3 wins the pot (3)
+
+Hand #216, P3 (597), v1 (3), P2 (0)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to P3 [5c 4d]
+Dealt to v1 [5h 5d]
+Dealt to P2 [Kc Td]
+P3 raises to 3
+v1 folds
+P3 wins the pot (5)
+
+Hand #217, P2 (0), P3 (599), v1 (1)
+v1 posts the blind of 1
+P3 posts the blind of 2
+Dealt to P2 [8s As]
+Dealt to P3 [Ks 2c]
+Dealt to v1 [7c 9c]
+Uncalled bet of 1 returned to P3
+*** FLOP *** (2) [6s 5c 7d]
+*** TURN *** (2) [6s 5c 7d] [5s]
+*** RIVER *** (2) [6s 5c 7d 5s] [Ac]
+P3 shows [Ks 2c]
+v1 shows [7c 9c]
+v1 wins the pot (2)
+
+Hand #218, v1 (2), P2 (0), P3 (598)
+P3 posts the blind of 1
+v1 posts the blind of 2
+Dealt to v1 [2c 7h]
+Dealt to P2 [5h 8h]
+Dealt to P3 [3d 9c]
+P3 calls 2
+*** FLOP *** (4) [Qh Qs 6s]
+*** TURN *** (4) [Qh Qs 6s] [6c]
+*** RIVER *** (4) [Qh Qs 6s 6c] [8d]
+v1 shows [2c 7h]
+P3 shows [3d 9c]
+P3 wins the pot (4)
+
