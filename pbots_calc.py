@@ -28,14 +28,14 @@ import ctypes
 import ctypes.util
 import sys
 
-'''if sys.platform.startswith('win'):
+if sys.platform.startswith('win'):
     pbots_calc = "pbots_calc"
 elif sys.platform.startswith('darwin'):
     pbots_calc = "libpbots_calc.dylib"
 else:
     pbots_calc = "libpbots_calc.so"
-'''
-pbots_calc = "pbots_calc"
+
+#pbots_calc = "pbots_calc"
 
 class _Results(ctypes.Structure):
     _fields_ = [("ev", ctypes.POINTER(ctypes.c_double)),
@@ -94,6 +94,8 @@ def calc(hands, board = '', dead = '', iters = 1000000):
         results = None
     pcalc.free_results(res)
     return results
+
+print calc([['Ah','Ad'],['Kh','Kd']])
 
 # 'results' is a Results object that includes ev
 # (the probability distribution, in list form),
