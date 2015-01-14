@@ -4,5 +4,6 @@ class allHands():
 	def __init__(self, listOfTuples):
 		self.hands = [Hand(tup) for tup in listOfTuples]
 
-	def update(self, board):
-		h.update(board) for h in self.hands
+	def update(self, board, holeCard1, holeCard2):
+		# h.update(board, ourCards) for h in self.hands
+		

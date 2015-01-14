@@ -43,6 +43,7 @@ class Round:
             
         # initialize possible hand objects
         self.oppAProbDist = pokerHandDist(self.listOfTuples)
+        self.oppBProbDist = pokerHandDist(self.listOfTuples)
 
         self.equities = # get from table
         
@@ -62,9 +63,12 @@ class Round:
         inp = inp[0:9] + [inp[9:int(inp[8]) + 9]] + inp[int(inp[8]) + 9:]
 
         self.potSize = int(inp[1])
+
         if self.numBoardCards != int(inp[2]):
-            self.allPossHands.update()
+            self.allHands.update(self.boardCards,self.holeCard1,self.holeCard2)
+            self.updateEquities()
             self.numBoardCards = int(inp[2])
+
         self.boardCards = inp[3]
         self.numActivePlayers = int(inp[4])
         self.activePlayers = inp[5]
@@ -95,12 +99,13 @@ class Round:
             return False
     
 
-    def updateEquity(self):
-        #consider num of active players
-        current_cards = [self.holeCard1, self.holeCard2] + self.boardCards
-        perms = getPermutations(current_cards)
-        for perm in perms:
-            ev = pbots_calc.calc([[self.holeCard1, self.holeCard2]], self.boardCards)
+    def updateEquities(self):
+        # consider num of active players
+        # group by boolean profiles
+        # find all combinations of boolean profiles
+        # query equity calculator
+        # generate full list
+        pass
 
 
         
