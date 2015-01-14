@@ -1,7 +1,7 @@
 import argparse
 import socket
 import sys
-from hand import *
+from Round import *
 
 """
 Simple example pokerbot, written in python.
@@ -28,10 +28,10 @@ class Player:
             print data
             inp = data.split()
             if inp[0] == 'NEWHAND':
-                hand = Hand(inp)
+                Round = Round(inp)
             if inp[0] == 'GETACTION':
-                hand.parsePacket(inp)
-                action = hand.getBestAction()
+                Round.parsePacket(inp)
+                action = Round.getBestAction()
                 print("Action: " + action)
             
             # When appropriate, reply to the engine with a legal action.
