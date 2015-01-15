@@ -64,6 +64,8 @@ def winner(hand_1, hand_2):
     return breakTie(ev_1, hand_1, hand_2)
 
 def breakTie(case, hand_1, hand_2):
+
+    # 1 - High Card
     if case == 1:
         while len(hand_1) > 2:
             h_1 = numValue(hand_1.pop()[0])
@@ -73,6 +75,8 @@ def breakTie(case, hand_1, hand_2):
             if h_2 > h_1:
                 return 2
         return 0
+
+    # 2 - Pair
     if case == 2:
         hand_1 = [numValue(x[0]) for x in hand_1]
         hand_2 = [numValue(x[0]) for x in hand_2]
@@ -92,6 +96,8 @@ def breakTie(case, hand_1, hand_2):
             if h_2 > h_1:
                 return 2
         return 0
+
+    # 3 - Two Pair
     if case == 3:
         hand_1 = sorted([numValue(x[0]) for x in hand_1])
         hand_2 = sorted([numValue(x[0]) for x in hand_2])
@@ -112,6 +118,9 @@ def breakTie(case, hand_1, hand_2):
         if h_2 > h_1:
             return 2
         return 0
+
+
+    # 4 - Three of a kind
     if case == 4:
         hand_1 = [numValue(x[0]) for x in hand_1]
         hand_2 = [numValue(x[0]) for x in hand_2]
@@ -131,6 +140,8 @@ def breakTie(case, hand_1, hand_2):
             if h_2 > h_1:
                 return 2        
         return 0
+
+    # 5 - Straight
     if case == 5:
         cards_1 = [numValue(x[0]) for x in hand_1]
         cards_2 = [numValue(x[0]) for x in hand_2]
@@ -156,6 +167,8 @@ def breakTie(case, hand_1, hand_2):
         if c_2 > c_1:
             return 2
         return 0
+
+    # 6 - Flush
     if case == 6:
         suits = [i[1] for i in hand_1]
         for i in set(suits):
@@ -175,6 +188,8 @@ def breakTie(case, hand_1, hand_2):
             if h_2 > h_1:
                 return 2
         return 0
+
+    # 7 - Full House
     if case == 7:
         hand_1 = sorted([numValue(x[0]) for x in hand_1])
         hand_2 = sorted([numValue(x[0]) for x in hand_2])
@@ -193,6 +208,8 @@ def breakTie(case, hand_1, hand_2):
         if d_2 > d_1:
             return 2
         return 0
+
+    # 8 - Four of a kind
     if case == 8:
         hand_1 = [numValue(x[0]) for x in hand_1]
         hand_2 = [numValue(x[0]) for x in hand_2]
@@ -209,6 +226,8 @@ def breakTie(case, hand_1, hand_2):
         if k_2 > k_1:
             return 2
         return 0
+    
+    # 9 - Straight Flush
     if case == 9:
         suits = [i[1] for i in hand_1]
         for i in set(suits):
@@ -226,8 +245,11 @@ def breakTie(case, hand_1, hand_2):
             if h_2 > h_1:
                 return 2
         return 0
+    
+    #10 - Royal Flush
     if case == 10:
         return 0
+    return 0
     
 def evalHand(hand):
     # hand is a list of 7 cards
@@ -284,6 +306,16 @@ def evalHand(hand):
         if len(set(cards)) > len(cards):
             return 7
         return 3
+    if uniqueCards == 3:
+        # Double full house, double three of a kind,
+        # or four of a kind + pair
+        triples = [x for x in cards if cards.count(x) == 3]
+        if len(set(triples)) > 0:
+            return 7
+        return 8
+    if uniqueCards == 2:
+        return 8
+    return 0
 
 def hasStraight(c):
     cards = [x for x in c]
