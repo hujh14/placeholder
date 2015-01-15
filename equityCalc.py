@@ -13,6 +13,11 @@ import itertools
 import random
 import time
 
+# hand is a list of our two hole cards, like: ['ah', '5d']
+# opponent is a similar list of the opponent's two hole cards
+# board is a list of 0-5 cards, like ['jd', '6s', '7c', '8c']
+# iters is the number of iterations to run
+
 def getEquity(hand, opponent = [], board = [], iters = 100):
     t = time.time()
     if str(type(hand)) == "<type: 'str'>":
