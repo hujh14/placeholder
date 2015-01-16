@@ -54,30 +54,42 @@ class Round:
         # [activePlayers] numLastActions [lastActions]
         # numLegalActions [legalActions] timebank
 
+        # GETACTION 30 5 As Ks Qh Qd Qc 200 200 200
+        # 2 true true false 3 CHECK:two CHECK:one DEAL:RIVER
+        # 2 CHECK BET:2:30 19.997999999999998
+
         # I'm so sorry
         # Do parse things
         # Grabs the lists in the packet and puts them in actual lists
-        inp = [inp[0], inp[1], inp[3:int(inp[2]) + 3]] + inp[int(inp[2]) + 3:]
-        inp = inp[0:3] + [inp[3:6], inp[6], inp[7:10], inp[10], inp[11:int(inp[10]) + 11]] + inp[int(inp[10]) + 11:]
-        inp = inp[0:9] + [inp[9:int(inp[8]) + 9]] + inp[int(inp[8]) + 9:]
 
-        self.potSize = int(inp[1])
-        if self.numBoardCards != int(inp[2]):
-            self.allPossHands.update()
-            self.numBoardCards = int(inp[2])
-        self.boardCards = inp[3]
-        self.numActivePlayers = int(inp[4])
-        self.activePlayers = inp[5]
-        for i in range(0, len(inp[5])):
-            self.activePlayers[i] = self.strToBool(self.activePlayers[i])
-        self.numLastActions = int(inp[6])
-        self.lastActions = inp[7]
-        self.numLegalActions = int(inp[8])
-        self.legalActions = inp[9]
-        self.timeBank = float(inp[10])
+        # Split to list
+        t = str(type(inp))
+        if t == "<class 'str'>" or t == "<type 'str'>":
+            inp = inp.split()
+        # Trim "GETACTION" header
+        inp = inp[1:]
+        self.boardCards, self.activePlayers, self.lastActions = [], [], []
+        self.stackSizes, self.legalActions = [], []
+        # Set pot
+        self.potSize = int(inp.pop(0))
+        # Get board cards
+        self.numBoardCards = int(inp.pop(0))
+        for i in range(self.numBoardCards):
+            self.boardCards += [inp.pop(0)]
+        for i in range(3):
+            self.stackSizes += [inp.pop(0)]
+        self.numActivePlayers = int(inp.pop(0))
+        for i in range(3):
+            self.activePlayers += [self.strToBool(inp.pop(0))]
+        self.numLastActions = int(inp.pop(0))
+        for i in range(self.numLastActions):
+            self.lastActions += [inp.pop(0)]
+        self.numLegalActions = int(inp.pop(0))
+        for i in range(self.numLegalActions):
+            self.legalActions += [inp.pop(0)]
+        self.timeBank = float(inp.pop(0))
 
         
-
     def getBestAction(self):
     
         print self.holeCard1
