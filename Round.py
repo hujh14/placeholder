@@ -25,7 +25,7 @@ class Round:
         self.activePlayers = initData[9:12]
         self.timeBank = float(initData[12])
         
-            # These get defined once we get the first GETACTION packet
+        # These get defined once we get the first GETACTION packet
         self.potSize = 0
         self.numBoardCards = 0
         self.boardCards = []
@@ -42,7 +42,8 @@ class Round:
         #self.oppB = pokerHandDist(self.listOfTuples).removeExistingCards([(self.holeCard1,self.holeCard2)])
             
         # initialize possible hand objects
-        self.oppAProbDist = pokerHandDist(self.listOfTuples)
+        self.oppAProbDist = pokerHandDist(self.listOfTuples).removeExistingCards(self.allHands,[(self.holeCard1,self.holeCard2),(self.holeCard2,self.holeCard1)])
+        self.oppBProbDist = pokerHandDist(self.listOfTuples).removeExistingCards(self.allHands,[(self.holeCard1,self.holeCard2),(self.holeCard2,self.holeCard1)])
 
         self.equities = # get from table
         
@@ -113,7 +114,4 @@ class Round:
         perms = getPermutations(current_cards)
         for perm in perms:
             ev = pbots_calc.calc([[self.holeCard1, self.holeCard2]], self.boardCards)
-
-
-        
-
+ 
