@@ -1,26 +1,20 @@
+import itertools
 
 class pokerHandDist:
-	def uniformDist(self,elts):
-		p = 1.0/len(elts)
-		return dict([(e,p) for e in elts])
-
-	def __init__ (self, list_of_hands):
-		
-		self.distribution = self.uniformDist(list_of_hands)
+        def uniformDist(self,elts):
+                p = 1.0/len(elts)
+                return dict([(e,p) for e in elts])
 
 
-	def removeExistingCards(self,rlist):
-		p0 = 1.0/len(list_of_hands)
+        def __init__ (self, hlist):
+                self.distribution = self.uniformDist(hlist)
 
-		for x in range(len(list_of_hands)):
-			for y in range(len(rlist)):
-				if rlist[y] == list_of_hands[x]:
-					del list_of_hands[x]
+        def removeExistingCards(self,rlist):
+                p0 = 1.0/len(self.distribution)
 
-		new_p = 1.0/(p0*len(list_of_hands))
-		self.oppHandADist = dict([(h,p) for h in list_of_hands])
-		self.oppHandBDist = dict([(h,p) for h in list_of_hands])	
+                for x in range(len(rlist)):
+                        if rlist[x] in self.distribution:
+                                del self.distribution[rlist[x]]
 
-				
-
-		
+                new_p = 1.0/(len(self.distribution))
+                return dict([(h,new_p) for h in self.distribution])
