@@ -43,8 +43,8 @@ class Round:
             
         # initialize possible hand objects
 
-        self.oppAProbDist = pokerHandDist(self.listOfTuples).removeExistingCards(self.allHands,[(self.holeCard1,self.holeCard2),(self.holeCard2,self.holeCard1)])
-        self.oppBProbDist = pokerHandDist(self.listOfTuples).removeExistingCards(self.allHands,[(self.holeCard1,self.holeCard2),(self.holeCard2,self.holeCard1)])
+        self.oppAProbDist = pokerHandDist(self.listOfTuples).removeExistingCards(self.holeCard1,self.holeCard2)
+        self.oppBProbDist = pokerHandDist(self.listOfTuples).removeExistingCards(self.holeCard1,self.holeCard2)
 
 
         self.equities = {} # get from table
