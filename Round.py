@@ -1,9 +1,9 @@
 from pokerHandDist import *
-from pbots_calc import *
+import pbots_calc
 from hand import *
 from allHands import *
 import itertools
-
+import equityCalc
 
 class Round:
 
@@ -37,17 +37,23 @@ class Round:
         self.numLegalActions = 0
         self.legalActions = []
 
+
+
+
         # this Class needs help!!!!
         #self.oppA = pokerHandDist(self.listOfTuples).removeExistingCards([(self.holeCard1,self.holeCard2)])
         #self.oppB = pokerHandDist(self.listOfTuples).removeExistingCards([(self.holeCard1,self.holeCard2)])
             
         # initialize possible hand objects
 
-        self.oppAProbDist = pokerHandDist(self.listOfTuples).removeExistingCards(self.allHands,[(self.holeCard1,self.holeCard2),(self.holeCard2,self.holeCard1)])
-        self.oppBProbDist = pokerHandDist(self.listOfTuples).removeExistingCards(self.allHands,[(self.holeCard1,self.holeCard2),(self.holeCard2,self.holeCard1)])
+        self.oppAProbDist = pokerHandDist(self.listOfTuples)#.removeExistingCards([self.holeCard1,self.holeCard2])
+        self.oppBProbDist = pokerHandDist(self.listOfTuples)#.removeExistingCards([self.holeCard1,self.holeCard2])
+        
+        self.blank = {'3c':2}
 
 
         self.equities = {} # get from table
+        #self.calculator = Results()
         
         
         
@@ -103,6 +109,12 @@ class Round:
             for i in range(self.numBoardCards):
                 self.boardCards += [inp.pop(0)]
             self.allHands.update(self.boardCards)
+            if temp == 3:
+                self.oppAProbDist.removeExistingCards(self.boardCards)
+                self.oppBProbDist.removeExistingCards(self.boardCards)
+            else:
+                self.oppAProbDist.removeExistingCards(self.boardCards[:len(self.boardCards)-1])
+                self.oppBProbDist.removeExistingCards(self.boardCards[:len(self.boardCards)-1])
             self.updateEquities()
         else:
             for i in range(self.numBoardCards):
@@ -124,8 +136,7 @@ class Round:
         
     def getBestAction(self):
     
-        print self.holeCard1
-        print self.holeCard2
+        
         v = 2
         if v < 15:
             return 'CHECK'
@@ -149,35 +160,57 @@ class Round:
             tempEquityDictionary = {}
             self.equities = {}
             eq = 0
-            print len(self.oppAProbDist.distribution)
-            for keyA in self.oppAProbDist.distribution:
-                for keyB in self.blank:
-                    keyAId = self.allHands.getId(keyA)
-                    print keyA, keyAId
-                    keyBId = self.allHands.getId(keyB)
-                    if (keyAId,keyBId) not in tempEquityDictionary and (keyBId,keyAId) not in tempEquityDictionary:
-                        #query equity calculator
-                        eq += 1
-                        tempEquityDictionary[(keyAId, keyBId)] = eq
-                        self.equities[(keyA,keyB)] = eq
-                    else:
-                        if (keyAId,keyBId) in tempEquityDictionary:
-                            eq = tempEquityDictionary[(keyAId,keyBId)]
-                        else:
-                            eq = tempEquityDictionary[(keyBId,keyAId)]
-                        self.equities[(keyA,keyB)] = eq
+            for keyA in self.oppAProbDist.distribution.keys():
+                keyAId = self.allHands.getId(keyA)
+                if keyAId not in tempEquityDictionary:
+                    # print [(self.holeCard1,self.holeCard2),keyA]
+                    # print self.boardCards
+                    # eq = pbots_calc.calc([(self.holeCard1,self.holeCard2),keyA], self.boardCards, '', 10).ev[0]
+                    eq = equityCalc.getEquity([self.holeCard1,self.holeCard2], keyA, self.boardCards, 100)
+                    self.equities[keyA] = eq
+                    tempEquityDictionary[keyAId] = eq
+                else:
+                    self.equities[keyA] = tempEquityDictionary[keyAId]
+
+            
+            # for keyA in self.oppAProbDist.keys():
+            #     for keyB in self.oppBProbDist.keys():
+            #         keyAId = self.allHands.getId(keyA)
+            #         #print keyA,keyB, keyAId
+            #         keyBId = self.allHands.getId(keyB)
+            #         if (keyAId,keyBId) not in tempEquityDictionary and (keyBId,keyAId) not in tempEquityDictionary:
+            #             #query equity calculator
+            #             eq = self.calculator.calc([self.holeCard1+self.holeCard2, keyA, keyB])
+            #             tempEquityDictionary[(keyAId, keyBId)] = eq
+            #             self.equities[(keyA,keyB)] = eq
+            #         else:
+            #             if (keyAId,keyBId) in tempEquityDictionary:
+            #                 eq = tempEquityDictionary[(keyAId,keyBId)]
+            #             else:
+            #                 eq = tempEquityDictionary[(keyBId,keyAId)]
+            #             self.equities[(keyA,keyB)] = eq
+            #     print len(self.equities)
 
 
 
-data = ['NEWHAND', '6', '3', '4c', '5s', '180', '223', '194', '3', 'true', 'true', 'true', '9.976153']
-r = Round(data)
-parse = ['GETACTION', '5', '0', '178', '223', '194', '3', 'true', 'true', 'true', '4', 'POST:1:P3', 'POST:2:v1', 'CALL:2:P2', 'FOLD:P3', '2', 'CHECK', 'RAISE:4:7', '9.976153464000001']
-parse2 = ['GETACTION', '5', '3', '7h', '6s', '5h', '178', '223', '194', '3', 'true', 'true', 'true', '2', 'CHECK:v1', 'DEAL:FLOP', '2', 'CHECK', 'BET:2:5', '9.972645038000001']
-r.parsePacket(parse)
-r.parsePacket(parse2)
-print r.holeCard1,r.holeCard2
-print r.boardCards
-print r.oppAProbDist.distribution
-print r.equities
-print r.allHands.hands[0].Id
+# data = ['NEWHAND', '6', '3', '4c', '5s', '180', '223', '194', '3', 'true', 'true', 'true', '9.976153']
+# r = Round(data)
+# parse = ['GETACTION', '5', '0', '178', '223', '194', '3', 'true', 'true', 'true', '4', 'POST:1:P3', 'POST:2:v1', 'CALL:2:P2', 'FOLD:P3', '2', 'CHECK', 'RAISE:4:7', '9.976153464000001']
+# parse2 = ['GETACTION', '5', '3', '7h', '6s', '5h', '178', '223', '194', '3', 'true', 'true', 'true', '2', 'CHECK:v1', 'DEAL:FLOP', '2', 'CHECK', 'BET:2:5', '9.972645038000001']
+# r.parsePacket(parse)
+# r.parsePacket(parse2)
+# #for h in r.allHands.hands:
+# #    print h.cards, h.Id
+# print r.holeCard1,r.holeCard2
+# print r.boardCards
+# #print r.oppAProbDist
+# for key in r.equities:
+#     print key, r.equities[key]
+# print len(r.equities)
+
+# #print equityCalc.getEquity(['ah','ad'], ['as','5h'], [], 1000)
+# print pbots_calc.calc([('4c', '5s'), ('5h', 'jh')],['7h', '6s', '5d'],'', 1000).ev[0]
+
+
+
 

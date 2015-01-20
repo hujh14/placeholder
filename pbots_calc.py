@@ -75,12 +75,13 @@ def calc(hands, board = '', dead = '', iters = 1000000):
     if str(type(hands)) == "<type 'list'>":
         h = ''
         for hand in hands:
-            if str(type(hand)) == "<type 'list'>":
+            if str(type(hand)) == "<type 'tuple'>":
                 hand = hand[0] + hand[1]
             h += hand + ':'
         hands = h[:-1]
     if str(type(board)) == "<type 'list'>":
         b = ''
+        
         for card in board:
             b += card
         board = b

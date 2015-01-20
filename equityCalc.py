@@ -20,6 +20,8 @@ import time
 
 def getEquity(hand, opponent = [], board = [], iters = 1000):
     t = time.time()
+    hand = [hand[0],hand[1]]
+    opponent = [opponent[0],opponent[1]]
     if str(type(hand)) == "<type: 'str'>":
         hand = [hand[:2].lower(), hand[2:].lower()]
     if str(type(board)) == "<type: 'str'>":
@@ -38,8 +40,10 @@ def getEquity(hand, opponent = [], board = [], iters = 1000):
                  '2d','3d','4d','5d','6d','7d','8d','9d','td','jd','qd','kd','ad']
 
     # Remove hole and board cards
+    
     for card in hand + board + opponent:
-        card_list.remove(card)
+        if card in card_list:
+            card_list.remove(card)
     
     a = 0
     for i in range(iters):
@@ -357,4 +361,4 @@ def numValue(card):
     else:
         return int(card)
     
-print getEquity(['ah','kd'], ['ad','ts'])
+# print getEquity(['ah','kd'], ['ad','ts'])
