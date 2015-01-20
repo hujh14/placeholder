@@ -25,13 +25,16 @@ class Player:
 
             # Here is where you should implement code to parse the packets from
             # the engine and act on it. We are just printing it instead.
-            print data
+            # print data
             inp = data.split()
             if inp[0] == 'NEWHAND':
-                Round = Round(inp)
+                print inp
+                r = Round(inp)
+                
             if inp[0] == 'GETACTION':
-                Round.parsePacket(inp)
-                action = Round.getBestAction()
+                print 'parse', inp
+                r.parsePacket(inp)
+                action = r.getBestAction()
                 print("Action: " + action)
             
             # When appropriate, reply to the engine with a legal action.

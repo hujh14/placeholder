@@ -6,8 +6,7 @@ class pokerHandDist:
 
 	def __init__ (self, list_of_hands):
 		
-
-		self.distribution = [possHand(cards) for cards in list_of_hands]
+		self.distribution = self.uniformDist(list_of_hands)
 
 
 	def removeExistingCards(self,rlist):

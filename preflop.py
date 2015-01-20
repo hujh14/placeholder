@@ -25,7 +25,6 @@ def getEq(hand):
             hand = hand[1] + hand[0] + hand[2:]
         # Find hand in file
         eq = s[s.find(hand):s.find("\n", s.find(hand) + 1)]
-        eq = float(eq[eq.find(",") + 1:])
-
-        return eq
+        eq = '.' + eq[eq.find(',') + 1:].replace('.', '')
+        return float(eq)
 
