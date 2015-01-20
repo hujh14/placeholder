@@ -73,36 +73,14 @@ class Round:
         # 2 true true false 3 CHECK:two CHECK:one DEAL:RIVER
         # 2 CHECK BET:2:30 19.997999999999998
 
-        # I'm so sorry
-        # Do parse things
-        # Grabs the lists in the packet and puts them in actual lists
-
-
-        # self.potSize = int(inp[1])
-
-        # if self.numBoardCards != int(inp[2]):
-        #     self.allHands.update(self.boardCards,self.holeCard1,self.holeCard2)
-        #     self.updateEquities()
-        #     self.numBoardCards = int(inp[2])
-
-        # self.boardCards = inp[3]
-        # self.numActivePlayers = int(inp[4])
-        # self.activePlayers = inp[5]
-        # for i in range(0, len(inp[5])):
-        #     self.activePlayers[i] = self.strToBool(self.activePlayers[i])
-        # self.numLastActions = int(inp[6])
-        # self.lastActions = inp[7]
-        # self.numLegalActions = int(inp[8])
-        # self.legalActions = inp[9]
-        # self.timeBank = float(inp[10])
-
         # Split to list
         t = str(type(inp))
         if t == "<class 'str'>" or t == "<type 'str'>":
             inp = inp.split()
+            
         # Trim "GETACTION" header
         inp = inp[1:]
-        self.boardCards, self.activePlayers, self.lastActions = [], [], []
+        self.activePlayers, self.lastActions = [], []
         self.stackSizes, self.legalActions = [], []
         # Set pot
         self.potSize = int(inp.pop(0))
@@ -111,19 +89,20 @@ class Round:
         # trigger update with new board
         if self.numBoardCards != temp:
             self.numBoardCards = temp
+            self.boardCards = []
             for i in range(self.numBoardCards):
-                self.boardCards += [inp.pop(0)]
+                self.boardCards += [inp.pop(0).lower()]
             self.allHands.update(self.boardCards)
             if temp == 3:
                 self.oppAProbDist.removeExistingCards(self.boardCards)
                 self.oppBProbDist.removeExistingCards(self.boardCards)
             else:
-                self.oppAProbDist.removeExistingCards(self.boardCards[:len(self.boardCards)-1])
-                self.oppBProbDist.removeExistingCards(self.boardCards[:len(self.boardCards)-1])
+                self.oppAProbDist.removeExistingCards(self.boardCards[-1:])
+                self.oppBProbDist.removeExistingCards(self.boardCards[-1:])
             self.updateEquities()
         else:
             for i in range(self.numBoardCards):
-                self.boardCards += [inp.pop(0)]
+                inp.pop(0)
         for i in range(3):
             self.stackSizes += [inp.pop(0)]
         self.numActivePlayers = int(inp.pop(0))
@@ -137,6 +116,9 @@ class Round:
             self.legalActions += [inp.pop(0)]
         self.timeBank = float(inp.pop(0))
 
+    def parseActions(self):
+        a = self.lastActions[:]
+        
 
         
     def getBestAction(self):
