@@ -101,8 +101,8 @@ class Round:
 
 
 
-
-            self.oppAProbDist.update(3,self.allHands)
+            self.parseOpponentsActionsandUpdateTheirRange()
+            
 
 
 
@@ -128,7 +128,12 @@ class Round:
         a = self.lastActions[:]
         
 
-        
+    def parseOpponentsActionsandUpdateTheirRange(self):
+        actions = self.lastActions
+        #for action in actions:
+        self.oppAProbDist.update(3,self.allHands)
+
+
     def getBestAction(self):
     
         
@@ -158,7 +163,7 @@ class Round:
 
         # without boolean check
         self.equities = {}
-        for keyA in self.oppAProbDist.distribution.keys():
+        for keyA in self.oppAProbDist.distribution.keys(): # should be combined distribution
             eq = pbots_calc.calc([(self.holeCard1,self.holeCard2),keyA], self.boardCards, '', 1000).ev[0]
             self.equities[keyA] = eq
 
@@ -212,6 +217,34 @@ parse = ['GETACTION', '5', '0', '178', '223', '194', '3', 'true', 'true', 'true'
 parse2 = ['GETACTION', '5', '3', '7h', '6s', '5h', '178', '223', '194', '3', 'true', 'true', 'true', '2', 'CHECK:v1', 'DEAL:FLOP', '2', 'CHECK', 'BET:2:5', '9.972645038000001']
 r.parsePacket(parse)
 r.parsePacket(parse2)
+
+# These get initialized at the start of the hand
+print r.handId
+print r.seat
+print r.holeCard1
+print r.holeCard2
+print r.stackSizes
+print r.numActivePlayers
+print r.activePlayers
+print r.timeBank
+
+# These get defined once we get the first GETACTION packet
+print r.potSize
+print r.numBoardCards
+print r.boardCards
+print r.stackSizes
+print r.numActivePlayers
+print r.activePlayers
+print r.numLastActions
+print r.lastActions
+print r.numLegalActions
+print r.legalActions
+
+
+
+
+
+
 #for h in r.allHands.hands:
 #    print h.cards, h.Id
 print r.holeCard1,r.holeCard2
@@ -228,7 +261,4 @@ print len(r.equities)
 
 #print equityCalc.getEquity(['ah','ad'], ['as','5h'], [], 1000)
 #print pbots_calc.calc([('4c', '5s'), ('5h', 'jh')],['7h', '6s', '5d'],'', 1000).ev[0]
-
-
-
-
+r
