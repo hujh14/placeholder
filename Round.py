@@ -7,7 +7,7 @@ import equityCalc
 
 class Round:
 
-    def __init__ (self, initData):
+    def __init__ (self, initData, oppA, oppB):
         # initData contains: NEWHAND handId seat holeCard1 holeCard2 [stackSizes] numActivePlayers [activePlayers] timeBank
 
         # generic stuff that doesn't need to be regenerated every hand.
@@ -18,8 +18,8 @@ class Round:
         # These get initialized at the start of the hand
         self.handId = int(initData[1])
         self.seat = int(initData[2])
-        self.holeCard1 = initData[3]
-        self.holeCard2 = initData[4]
+        self.holeCard1 = initData[3].lower()
+        self.holeCard2 = initData[4].lower()
         self.stackSizes = initData[5:8]
         self.numActivePlayers = int(initData[8])
         self.activePlayers = initData[9:12]
@@ -27,7 +27,7 @@ class Round:
         
         # These get defined once we get the first GETACTION packet
         self.potSize = 0
-        self.numBoardCards = 0
+        self.numBoardCards = -1
         self.boardCards = []
         self.stackSizes = []
         self.numActivePlayers = 0
@@ -36,6 +36,8 @@ class Round:
         self.lastActions = []
         self.numLegalActions = 0
         self.legalActions = []
+
+        self.preFlop = True
 
 
 
@@ -46,7 +48,8 @@ class Round:
             
         # initialize possible hand objects
 
-
+        self.oppAName = oppA
+        self.oppBName = oppB
         self.oppAProbDist = pokerHandDist(self.listOfTuples)
         self.oppAProbDist.removeExistingCards([self.holeCard1,self.holeCard2])
         self.oppBProbDist = pokerHandDist(self.listOfTuples)
@@ -58,7 +61,7 @@ class Round:
 
         self.equities = {} # get from table
         
-        
+        self.startingHandStrengths = {} # get from table
         
         
 
@@ -91,7 +94,9 @@ class Round:
             self.boardCards = []
             for i in range(self.numBoardCards):
                 self.boardCards += [inp.pop(0).lower()]
-            self.allHands.update(self.boardCards)
+
+            #self.allHands.update(self.boardCards)
+
             if temp == 3:
                 self.oppAProbDist.removeExistingCards(self.boardCards)
                 self.oppBProbDist.removeExistingCards(self.boardCards)
@@ -101,13 +106,7 @@ class Round:
 
 
 
-            self.parseOpponentsActionsandUpdateTheirRange()
             
-
-
-
-
-            self.updateEquities()
         else:
             for i in range(self.numBoardCards):
                 inp.pop(0)
@@ -124,14 +123,62 @@ class Round:
             self.legalActions += [inp.pop(0)]
         self.timeBank = float(inp.pop(0))
 
-    def parseActions(self):
-        a = self.lastActions[:]
+
+        self.parseOpponentsActionsandUpdateTheirRange()
+        self.updateEquities()
+
         
 
     def parseOpponentsActionsandUpdateTheirRange(self):
+        print self.holeCard1,self.holeCard2
+        print self.boardCards
         actions = self.lastActions
-        #for action in actions:
-        self.oppAProbDist.update(3,self.allHands)
+        print 'actions', actions
+        
+        for action in actions:
+            a = action.split(':')
+            if self.preFlop:
+                if a[0] == 'CHECK':
+                    pass
+                elif a[0] == 'FOLD':
+                    if a[1] == self.oppAName:
+                        self.oppAProbDist = None
+                        self.numActivePlayers -= 1
+                    # delete opp distribution
+                    # change num of active players
+                elif a[0] == 'CALL':
+                    if a[2] == self.oppAName:
+                        self.oppAProbDist.preflopUpdate(1, self.startingHandStrengths)
+                    elif a[2] == self.oppBName:
+                        self.oppBProbDist.preflopUpdate(1, self.startingHandStrengths)
+                    # relatively weak move
+
+                elif a[0] == 'RAISE':
+                    if a[2] == self.oppAName:
+                        self.oppAProbDist.preflopUpdate(2, self.startingHandStrengths) # update level and use preflop table
+                    elif a[2] == self.oppBName:
+                        self.oppBProbDist.preflopUpdate(2, self.startingHandStrengths)
+
+                elif a[0] == 'POST':
+                    pass
+                elif a[0] == 'DEAL':
+                    self.allHands.update(self.boardCards)
+                    self.preFlop = False
+
+            else: 
+                if a[0] = 'DEAL':
+                    self.allHands.update(self.boardCards)
+
+                elif a[0] == 'CHECK':
+                    pass
+                elif a[0] == 'FOLD':
+                    pass
+                elif a[0] == 'CALL':
+                    pass
+                elif a[0] == 'RAISE':
+                    pass
+                    #self.oppAProbDist.update(3,self.allHands)
+            
 
 
     def getBestAction(self):
@@ -211,34 +258,36 @@ class Round:
 
 
 
-data = ['NEWHAND', '6', '3', '4c', '5s', '180', '223', '194', '3', 'true', 'true', 'true', '9.976153']
+data = ['NEWHAND', '11', '3', 'Jd', '3d', '233', '176', '188', '3', 'true', 'true', 'true', '8.789302']
 r = Round(data)
-parse = ['GETACTION', '5', '0', '178', '223', '194', '3', 'true', 'true', 'true', '4', 'POST:1:P3', 'POST:2:v1', 'CALL:2:P2', 'FOLD:P3', '2', 'CHECK', 'RAISE:4:7', '9.976153464000001']
-parse2 = ['GETACTION', '5', '3', '7h', '6s', '5h', '178', '223', '194', '3', 'true', 'true', 'true', '2', 'CHECK:v1', 'DEAL:FLOP', '2', 'CHECK', 'BET:2:5', '9.972645038000001']
+parse = ['GETACTION', '4', '0', '233', '175', '188', '3', 'true', 'true', 'true', '4', 'POST:1:P3', 'POST:2:v1', 'FOLD:P2', 'CALL:2:P3', '2', 'CHECK', 'RAISE:4:6', '8.789301610999999']
+parse2 = ['GETACTION', '4', '3', 'As', 'Ah', '5c', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:FLOP', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.664166238']
+# parse3 = ['GETACTION', '4', '4', 'As', 'Ah', '5c', 'Th', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:TURN', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.609433912']
+# parse4 = ['GETACTION', '4', '5', 'As', 'Ah', '5c', 'Th', 'Kc', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:RIVER', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.547964306']
 r.parsePacket(parse)
 r.parsePacket(parse2)
 
-# These get initialized at the start of the hand
-print r.handId
-print r.seat
-print r.holeCard1
-print r.holeCard2
-print r.stackSizes
-print r.numActivePlayers
-print r.activePlayers
-print r.timeBank
+# # These get initialized at the start of the hand
+# print r.handId
+# print r.seat
+# print r.holeCard1
+# print r.holeCard2
+# print r.stackSizes
+# print r.numActivePlayers
+# print r.activePlayers
+# print r.timeBank
 
-# These get defined once we get the first GETACTION packet
-print r.potSize
-print r.numBoardCards
-print r.boardCards
-print r.stackSizes
-print r.numActivePlayers
-print r.activePlayers
-print r.numLastActions
-print r.lastActions
-print r.numLegalActions
-print r.legalActions
+# # These get defined once we get the first GETACTION packet
+# print r.potSize
+# print r.numBoardCards
+# print r.boardCards
+# print r.stackSizes
+# print r.numActivePlayers
+# print r.activePlayers
+# print r.numLastActions
+# print r.lastActions
+# print r.numLegalActions
+# print r.legalActions
 
 
 
@@ -247,18 +296,16 @@ print r.legalActions
 
 #for h in r.allHands.hands:
 #    print h.cards, h.Id
-print r.holeCard1,r.holeCard2
-print r.boardCards
+
 #print r.oppAProbDist
 #r.oppAProbDist.update(3,r.allHands)
 
 
-for key in r.equities:
-    print key, r.equities[key], r.allHands.getStrength(key)
-print len(r.equities)
+# for key in r.equities:
+#     print key, r.equities[key], r.allHands.getStrength(key)
+# print len(r.equities)
 
 
 
 #print equityCalc.getEquity(['ah','ad'], ['as','5h'], [], 1000)
 #print pbots_calc.calc([('4c', '5s'), ('5h', 'jh')],['7h', '6s', '5d'],'', 1000).ev[0]
-r

@@ -40,12 +40,23 @@ class pokerHandDist:
 
         def update(self, level, allHands):
                 toDelete = []
+
                 for key in self.distribution:
                         strength = allHands.getStrength(key)
                         if strength < level:
                                 toDelete.append(key)
                 for key in toDelete:
                         del self.distribution[key]
+                self.normalize()
+
+        def preflopUpdate(self, level, startingHandStrengths):
+                toDelete = []
+
+                if level == 1:
+                        pass
+                if level == 2:
+                        pass
+
                 self.normalize()
 
                 

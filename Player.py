@@ -27,9 +27,13 @@ class Player:
             # the engine and act on it. We are just printing it instead.
             # print data
             inp = data.split()
+            if inp[0] == 'NEWGAME':
+                oppA = inp[1]
+                oppB = inp[2] #maybe
+
             if inp[0] == 'NEWHAND':
                 print inp
-                r = Round(inp)
+                r = Round(inp, 'P2', 'P3')
                 
             if inp[0] == 'GETACTION':
                 print 'parse', inp
