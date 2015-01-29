@@ -38,6 +38,8 @@ class Round:
         self.legalActions = []
 
         self.preFlop = True
+        self.oppAAggression = 0
+        self.oppBAggression = 0
 
 
 
@@ -74,7 +76,7 @@ class Round:
         # GETACTION 30 5 As Ks Qh Qd Qc 200 200 200
         # 2 true true false 3 CHECK:two CHECK:one DEAL:RIVER
         # 2 CHECK BET:2:30 19.997999999999998
-
+        
         # Split to list
         t = str(type(inp))
         if t == "<class 'str'>" or t == "<type 'str'>":
@@ -98,11 +100,15 @@ class Round:
             #self.allHands.update(self.boardCards)
 
             if temp == 3:
-                self.oppAProbDist.removeExistingCards(self.boardCards)
-                self.oppBProbDist.removeExistingCards(self.boardCards)
+                if self.oppAProbDist != None:
+                    self.oppAProbDist.removeExistingCards(self.boardCards)
+                if self.oppBProbDist != None:
+                    self.oppBProbDist.removeExistingCards(self.boardCards)
             else:
-                self.oppAProbDist.removeExistingCards(self.boardCards[:len(self.boardCards)-1])
-                self.oppBProbDist.removeExistingCards(self.boardCards[:len(self.boardCards)-1])
+                if self.oppAProbDist != None:
+                    self.oppAProbDist.removeExistingCards(self.boardCards[:len(self.boardCards)-1])
+                if self.oppBProbDist != None:
+                    self.oppBProbDist.removeExistingCards(self.boardCards[:len(self.boardCards)-1])
 
 
 
@@ -127,6 +133,7 @@ class Round:
         self.parseOpponentsActionsandUpdateTheirRange()
         self.updateEquities()
 
+
         
 
     def parseOpponentsActionsandUpdateTheirRange(self):
@@ -143,6 +150,9 @@ class Round:
                 elif a[0] == 'FOLD':
                     if a[1] == self.oppAName:
                         self.oppAProbDist = None
+                        self.numActivePlayers -= 1
+                    elif a[1] == self.oppBName:
+                        self.oppBProbDist = None
                         self.numActivePlayers -= 1
                     # delete opp distribution
                     # change num of active players
@@ -166,29 +176,61 @@ class Round:
                     self.preFlop = False
 
             else: 
-                if a[0] = 'DEAL':
+                if a[0] == 'DEAL':
                     self.allHands.update(self.boardCards)
 
                 elif a[0] == 'CHECK':
-                    pass
+                    if a[1] == self.oppAName:
+                        pass
+                        # should show weakness
+
                 elif a[0] == 'FOLD':
-                    pass
+                    if a[1] == self.oppAName:
+                        self.oppAProbDist = None
+                        self.numActivePlayers -= 1
+                    elif a[1] == self.oppBName:
+                        self.oppBProbDist = None
+                        self.numActivePlayers -= 1
+
                 elif a[0] == 'CALL':
-                    pass
+                    amountCalled = a[1]
+                    if a[2] == self.oppAName:
+                        self.oppAAggression += int(3*(float(amountCalled) / self.potSize))
+                        self.oppAProbDist.update(self.oppAAggression, self.allHands)
+                    elif a[2] == self.oppBName:
+                        self.oppBAggression += int(6*(float(amountCalled) / self.potSize)) # not the pot size they bet into needs to be fixed
+                        self.oppBProbDist.update(self.oppBAggression, self.allHands)
+
                 elif a[0] == 'RAISE':
-                    pass
-                    #self.oppAProbDist.update(3,self.allHands)
+                    amountRaised = a[1]
+                    if a[2] == self.oppAName:
+                        self.oppAAggression += int(6*(float(amountRaised) / self.potSize)) # not the pot size they bet into needs to be fixed
+                        self.oppAProbDist.update(self.oppAAggression, self.allHands)
+                        
+                    elif a[2] == self.oppBName:
+                        self.oppBAggression += int(6*(float(amountRaised) / self.potSize)) # not the pot size they bet into needs to be fixed
+                        self.oppBProbDist.update(self.oppBAggression, self.allHands)
+
+                        #self.oppAProbDist.update(3,self.allHands)
             
 
 
     def getBestAction(self):
-    
-        
-        v = 2
-        if v < 15:
-            return 'CHECK'
+        if self.preFlop:
+            if self.seat == 1:
+                pass
+            elif self.seat == 2:
+                pass
+            elif self.seat == 3:
+                pass
         else:
-            return 'RAISE:2'
+            pass
+        
+        # v = 2
+        # if v < 15:
+        #     return 'CHECK'
+        # else:
+        #     return 'RAISE:2'
             
     def strToBool(self, s):
         if s.lower() == 'true':
@@ -203,14 +245,18 @@ class Round:
         # find all combinations of boolean profiles
         # query equity calculator
         # generate full list
-
-        if self.numActivePlayers == 3:
-            pass
-            # combine oppADist and oppBDist
+        print self.numActivePlayers
+        if self.numActivePlayers == 2:
+            if self.oppAProbDist != None:
+                combinedList = self.oppAProbDist.distribution.keys()
+            else:
+                combinedList = self.oppBProbDist.distribution.keys()
+        elif self.numActivePlayers == 3:
+            combinedList = list(set(self.oppAProbDist.distribution.keys() + self.oppBProbDist.distribution.keys()))
 
         # without boolean check
         self.equities = {}
-        for keyA in self.oppAProbDist.distribution.keys(): # should be combined distribution
+        for keyA in combinedList: # should be combined distribution
             eq = pbots_calc.calc([(self.holeCard1,self.holeCard2),keyA], self.boardCards, '', 1000).ev[0]
             self.equities[keyA] = eq
 
@@ -259,9 +305,9 @@ class Round:
 
 
 data = ['NEWHAND', '11', '3', 'Jd', '3d', '233', '176', '188', '3', 'true', 'true', 'true', '8.789302']
-r = Round(data)
+r = Round(data, 'P2', 'P3')
 parse = ['GETACTION', '4', '0', '233', '175', '188', '3', 'true', 'true', 'true', '4', 'POST:1:P3', 'POST:2:v1', 'FOLD:P2', 'CALL:2:P3', '2', 'CHECK', 'RAISE:4:6', '8.789301610999999']
-parse2 = ['GETACTION', '4', '3', 'As', 'Ah', '5c', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:FLOP', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.664166238']
+parse2 = ['GETACTION', '4', '3', 'As', 'Ah', '5c', '233', '175', '188', '2', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:FLOP', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.664166238']
 # parse3 = ['GETACTION', '4', '4', 'As', 'Ah', '5c', 'Th', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:TURN', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.609433912']
 # parse4 = ['GETACTION', '4', '5', 'As', 'Ah', '5c', 'Th', 'Kc', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:RIVER', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.547964306']
 r.parsePacket(parse)
