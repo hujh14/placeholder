@@ -64,8 +64,6 @@ class Round:
 
         self.equities = {} # get from table
         
-        self.startingHandStrengths = {} # get from table
-        
         
 
     def parsePacket(self,inp):
@@ -158,17 +156,19 @@ class Round:
                     # delete opp distribution
                     # change num of active players
                 elif a[0] == 'CALL':
+                    # remove everything less than .27 and everything greater than .44 (stuff better than aj)
                     if a[2] == self.oppAName:
-                        self.oppAProbDist.preflopUpdate(1, self.startingHandStrengths)
+                        self.oppAProbDist.preflopUpdate(1)
                     elif a[2] == self.oppBName:
-                        self.oppBProbDist.preflopUpdate(1, self.startingHandStrengths)
+                        self.oppBProbDist.preflopUpdate(1)
                     # relatively weak move
 
                 elif a[0] == 'RAISE':
+                    # remove everything less than .4
                     if a[2] == self.oppAName:
-                        self.oppAProbDist.preflopUpdate(2, self.startingHandStrengths) # update level and use preflop table
+                        self.oppAProbDist.preflopUpdate(2) # update level and use preflop table
                     elif a[2] == self.oppBName:
-                        self.oppBProbDist.preflopUpdate(2, self.startingHandStrengths)
+                        self.oppBProbDist.preflopUpdate(2)
                     self.betInto = True
 
                 elif a[0] == 'POST':
@@ -177,7 +177,7 @@ class Round:
                     self.allHands.update(self.boardCards)
                     self.preFlop = False
 
-            else: 
+            else:
                 if a[0] == 'DEAL':
                     self.allHands.update(self.boardCards)
 
@@ -218,9 +218,10 @@ class Round:
 
 
     def getBestAction(self):
-        self.expectedEquity()
+        #self.expectedEquity()
         if self.preFlop:
             if self.betInto:
+                print 'betInto'
                 # calculate expected value to decided to call
                 self.expectedEquity()
                 self.betInto = False
@@ -317,7 +318,9 @@ class Round:
                 totalB += self.oppBProbDist.distribution[key] * self.equities[key]
         else:
             totalB = 1
-        print 'A', self.oppAProbDist
+        print 'A Name', self.oppAName
+        print 'A', self.oppAProbDist.distribution
+        print 'A length', len(self.oppAProbDist.distribution)
         print 'B Name', self.oppBName
         print 'B', self.oppBProbDist.distribution
         print 'B length', len(self.oppBProbDist.distribution)
@@ -327,12 +330,12 @@ class Round:
 
 data = ['NEWHAND', '11', '3', 'Jd', '3d', '233', '176', '188', '3', 'true', 'true', 'true', '8.789302']
 r = Round(data, 'P2', 'P3')
-parse = ['GETACTION', '4', '0', '233', '175', '188', '3', 'true', 'true', 'true', '4', 'POST:1:P3', 'POST:2:v1', 'FOLD:P2', 'CALL:2:P3', '2', 'CHECK', 'RAISE:4:6', '8.789301610999999']
+parse = ['GETACTION', '4', '0', '233', '175', '188', '3', 'true', 'true', 'true', '4', 'POST:1:P3', 'POST:2:v1', 'CALL:2:P2', 'RAISE:4:P3', '2', 'CHECK', 'RAISE:4:6', '8.789301610999999']
 parse2 = ['GETACTION', '4', '3', 'As', 'Ah', '5c', '233', '175', '188', '2', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:FLOP', 'RAISE:5:P3', '2', 'CHECK', 'BET:2:4', '8.664166238']
 # parse3 = ['GETACTION', '4', '4', 'As', 'Ah', '5c', 'Th', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:TURN', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.609433912']
 # parse4 = ['GETACTION', '4', '5', 'As', 'Ah', '5c', 'Th', 'Kc', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:RIVER', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.547964306']
 r.parsePacket(parse)
-r.parsePacket(parse2)
+#r.parsePacket(parse2)
 r.getBestAction()
 
 # # These get initialized at the start of the hand

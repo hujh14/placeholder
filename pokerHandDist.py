@@ -1,4 +1,5 @@
 import itertools
+from preflop import getEq
 
 class pokerHandDist:
         def uniformDist(self,elts):
@@ -49,14 +50,24 @@ class pokerHandDist:
                         del self.distribution[key]
                 self.normalize()
 
-        def preflopUpdate(self, level, startingHandStrengths):
+        def preflopUpdate(self, level):
                 toDelete = []
-
+                
                 if level == 1:
-                        pass
-                if level == 2:
-                        pass
+                        for key in self.distribution:
+                                stringkey = key[0]+key[1]
+                                strength = getEq(stringkey)
+                                if strength > 0.45 or strength < 0.27:
+                                        toDelete.append(key)
+                elif level == 2:
+                        for key in self.distribution:
+                                stringkey = key[0]+key[1]
+                                strength = getEq(stringkey)
+                                if strength < .4:
+                                        toDelete.append(key)
 
+                for key in toDelete:
+                        del self.distribution[key]
                 self.normalize()
 
                 
@@ -65,7 +76,11 @@ class pokerHandDist:
 
 # # huh = [('ah','kc'),('4s','5s'),('6s','7s'),('8s','qs')]
 # oppAProbDist = pokerHandDist(listOfTuples)
+# print len(oppAProbDist.distribution)
+
+# oppAProbDist.preflopUpdate(2)
 # print oppAProbDist.distribution
+# print len(oppAProbDist.distribution)
 
 # oppAProbDist.removeExistingCards(['ah','5s'])
 # print oppAProbDist.distribution
