@@ -3,12 +3,13 @@ import itertools
 
 def getEq(hand):
     
-    if str(type(hand)) == "<type 'str'>":
+    if type(hand) == str:
         hand = [hand[:2], hand[2:]]
+    hand = [h for h in hand]
     
-    hand[0] = hand[0][0].upper() + hand[0][1]
-    hand[1] = hand[1][0].upper() + hand[1][1]
-
+    # hand[0] = hand[0][0].upper() + hand[0][1]
+    # hand[1] = hand[1][0].upper() + hand[1][1]
+    hand = [h[0].upper() + h[1] for h in hand]
     if hand[0][1] == hand[1][1]:
         # Same suit
         hand = hand[0][0] + hand[1][0] + "s"
@@ -27,4 +28,3 @@ def getEq(hand):
         eq = s[s.find(hand):s.find("\n", s.find(hand) + 1)]
         eq = '.' + eq[eq.find(',') + 1:].replace('.', '')
         return float(eq)
-
