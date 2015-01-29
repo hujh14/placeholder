@@ -28,18 +28,19 @@ class Player:
             # print data
             inp = data.split()
             if inp[0] == 'NEWGAME':
-                oppA = inp[1]
-                oppB = inp[2] #maybe
+                pass
 
-            if inp[0] == 'NEWHAND':
-                print inp
-                r = Round(inp, 'P2', 'P3')
+            elif inp[0] == 'NEWHAND':
+                #print inp
+                r = Round(inp)
                 
-            if inp[0] == 'GETACTION':
-                print 'parse', inp
+            elif inp[0] == 'GETACTION':
+                #print 'parse', inp
                 r.parsePacket(inp)
                 action = r.getBestAction()
-                print("Action: " + action)
+                #print action
+                s.send(action + "\n")
+                #print("Action: " + action)
             
             # When appropriate, reply to the engine with a legal action.
             # The engine will ignore all spurious responses.
@@ -47,11 +48,8 @@ class Player:
             # illegal action.
             # When sending responses, terminate each response with a newline
             # character (\n) or your bot will hang!
-            word = data.split()[0]
-            if word == "GETACTION":
-                # Currently CHECK on every move. You'll want to change this.
-                s.send(action + "\n")
-            elif word == "REQUESTKEYVALUES":
+
+            elif inp[0] == "REQUESTKEYVALUES":
                 # At the end, the engine will allow your bot save key/value pairs.
                 # Send FINISH to indicate you're done.
                 s.send("FINISH\n")

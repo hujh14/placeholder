@@ -9,11 +9,6 @@ class allHands():
 		for h in self.hands:
 			h.update(board)
 
-	def getId(self, tup):
-		for h in self.hands:
-			if h.cards == tup:
-				return h.Id
-
 	def getStrength(self,tup):
 		for h in self.hands:
 			if h.cards == tup:

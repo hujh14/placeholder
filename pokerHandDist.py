@@ -39,15 +39,23 @@ class pokerHandDist:
                 #print self.prob
                 #print self.prob*len(self.distribution.keys())
 
-        def update(self, level, allHands):
+        def update(self, kind, minimum, maximum, allHands):
                 toDelete = []
+                if kind == 'normal':
+                        for key in self.distribution:
+                                strength = allHands.getStrength(key)
+                                if strength < minimum or strength > maximum:
+                                        toDelete.append(key)
+                elif kind == 'split':
+                        for key in self.distribution:
+                                strength = allHands.getStrength(key)
+                                if strength > minimum and strength < maximum:
+                                        toDelete.append(key)
 
-                for key in self.distribution:
-                        strength = allHands.getStrength(key)
-                        if strength < level:
-                                toDelete.append(key)
                 for key in toDelete:
                         del self.distribution[key]
+
+
                 self.normalize()
 
         def preflopUpdate(self, level):

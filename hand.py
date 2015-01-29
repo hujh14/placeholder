@@ -1,29 +1,10 @@
 class Hand():
     def __init__(self, cardTuple):
         self.cards = cardTuple
-
-        self.madePair = False
         self.pairSize = 0
-
-        self.madeTwoPair = False
         self.twoPairSize = 0
-
-        self.madeTrips = False
         self.tripSize = 0
-
-        self.madeStraight = False
-        self.madeFlush = False
-        self.madeFullHouse = False
         self.FullHouseSize = 0
-        self.madeFourOfKind = False
-        self.madeStraightFlush = False
-
-        self.OpenEndedStraightDraw = False
-        self.GutShotStraightDraw = False
-        self.FlushDraw = False
-
-        self.Id = 0
-
         self.strength = 0
         # 0 means nothing
         # 1 means highcard
@@ -39,35 +20,6 @@ class Hand():
         # 19 means 4ofkind
         # 20 means straightflush
 
-    def idUpdate(self):
-        temp1 = str(int(self.madePair))+str(self.pairSize)+str(int(self.madeTwoPair))+str(self.twoPairSize)+str(int(self.madeTrips))+str(self.tripSize)
-        temp2 = str(int(self.madeStraight))+str(int(self.madeFlush))+str(int(self.madeFullHouse))+str(self.FullHouseSize)+str(int(self.madeFourOfKind))+str(int(self.madeStraightFlush))
-        temp3 = str(int(self.OpenEndedStraightDraw))+str(int(self.GutShotStraightDraw))+str(int(self.FlushDraw))
-        self.Id = temp1+temp2+temp3
-
-    def PrintEverything(self):
-        print('madePair', self.madePair)
-        print('pairSize', self.pairSize)
-
-        print('madeTwoPair', self.madeTwoPair)
-        print('twoPairSize', self.twoPairSize)
-
-        print('madeTrips', self.madeTrips)
-        print('tripSize', self.tripSize)
-
-        print('madeStraight', self.madeStraight)
-        print('madeFlush', self.madeFlush)
-        print('madeFullHouse', self.madeFullHouse)
-        print('FullHouseSize', self.FullHouseSize)
-        print('madeFourOfKind', self.madeFourOfKind)
-        print('madeStraightFlush', self.madeStraightFlush)
-
-        print('OpenEndedStraightDraw', self.OpenEndedStraightDraw)
-        print('GutShotStraightDraw', self.GutShotStraightDraw)
-        print('FlushDraw', self.FlushDraw)
-        print(self.Id)
-        print(self.strength)
-
 
     def update(self, board):
         # Updates boolean profile
@@ -82,66 +34,51 @@ class Hand():
             duplicates.remove(x)
         
         if hasStraightFlush(cards): # not going to happen
-            self.madeStraightFlush = True
             self.strength = 20
         elif hasFourOfKind(duplicates): # works!
-            self.madeFourOfKind = True
             self.strength = 19
         elif len(duplicates) >= 3 and len(set(duplicates)) != len(duplicates): # works?
-            self.madeFullHouse = True
             self.FullHouseSize = duplicates[1] #works for most cases
             self.strength = 18
         elif hasFlush(suits):
-            self.madeFlush = True
             self.strength = 17
         elif hasStraight(nums):
-            self.madeStraight = True
             self.strength = 15
 
             if hasFlushDraw(suits):
-                self.FlushDraw = True
                 self.strength +=1
 
         elif len(duplicates) == 2 and len(set(duplicates)) == 1: # this works
-            self.madeTrips = True
             self.tripSize = duplicates[0]
             self.strength = 11
 
             if hasFlushDraw(suits):
-                self.FlushDraw = True
                 self.strength += 1
             straightDrawOuts = countStraightDrawOuts(nums)
             if straightDrawOuts != 0:
                 if straightDrawOuts ==1:
-                    self.hasGutShotStraightDraw = True
                     self.strength += 1
                 else:
-                    self.hasOpenEndedStraightDraw = True
                     self.strength += 1
             if hasGoodKicker(self.cards, self.tripSize):
                 self.strength += 1
 
         elif len(duplicates) >= 2: # this works
-            self.madeTwoPair = True
             self.twoPairSize = duplicates[1]
             self.strength = 7
 
             if hasFlushDraw(suits):
-                self.FlushDraw = True
                 self.strength += 1
             straightDrawOuts = countStraightDrawOuts(nums)
             if straightDrawOuts != 0:
                 if straightDrawOuts ==1:
-                    self.hasGutShotStraightDraw = True
                     self.strength += 1
                 else:
-                    self.hasOpenEndedStraightDraw = True
                     self.strength += 1
             if hasGoodKicker(self.cards, self.twoPairSize):
                 self.strength += 1
 
         elif len(duplicates) == 1:
-            self.madePair = True
             self.pairSize = duplicates[0]
             if self.pairSize >= 12:
                 self.pairSize = 5
@@ -151,7 +88,6 @@ class Hand():
                 self.strength = 1
 
             if hasFlushDraw(suits):
-                self.FlushDraw = True
                 self.strength += 2
             if hasGoodKicker(self.cards, self.pairSize):
                 self.strength += 1
@@ -159,15 +95,12 @@ class Hand():
             straightDrawOuts = countStraightDrawOuts(nums)
             if straightDrawOuts != 0:
                 if straightDrawOuts ==1:
-                    self.hasGutShotStraightDraw = True
                     self.strength += 1
                 else:
-                    self.hasOpenEndedStraightDraw = True
                     self.strength += 2
 
         else:
             if hasFlushDraw(suits):
-                self.FlushDraw = True
                 if hasGoodFlushDraw:
                     self.strength = 6
                 else:
@@ -175,14 +108,9 @@ class Hand():
             straightDrawOuts = countStraightDrawOuts(nums)
             if straightDrawOuts != 0:
                 if straightDrawOuts ==1:
-                    self.hasGutShotStraightDraw = True
                     self.strength = 2
                 else:
-                    self.hasOpenEndedStraightDraw = True
                     self.strength = 5
-
-        self.idUpdate()
-        #self.PrintEverything()
         
 
 def hasFourOfKind(duplicates):
@@ -199,28 +127,29 @@ def hasFourOfKind(duplicates):
     return False
 
 def hasStraightFlush(cards):
-    h, d, c, s = 0, 0, 0, 0
+    return False
+    # h, d, c, s = 0, 0, 0, 0
 
-    for x in cards:
-        if x[1] == 'h':
-            h += 1
-        if x[1] == 'd':
-            d += 1
-        if x[1] == 'c':
-            c += 1
-        if x[1] == 's':
-            s += 1
+    # for x in cards:
+    #     if x[1] == 'h':
+    #         h += 1
+    #     if x[1] == 'd':
+    #         d += 1
+    #     if x[1] == 'c':
+    #         c += 1
+    #     if x[1] == 's':
+    #         s += 1
 
-    if h > 4 or d > 4 or c > 4 or s > 4:
-        for i in range(len(cards)-1):
-            diff = cards[i]-cards[i-1]
-            if diff != 1:
-                if i > 3:
-                    cards.pop(i)
-                else:
-                    cards.pop(i-1)
+    # if h > 4 or d > 4 or c > 4 or s > 4:
+    #     for i in range(len(cards)-1):
+    #         diff = int(cards[i])-int(cards[i-1])
+    #         if diff != 1:
+    #             if i > 3:
+    #                 cards.pop(i)
+    #             else:
+    #                 cards.pop(i-1)
         
-    return (len(cards) > 4)
+    # return (len(cards) > 4)
 
 def hasFlush(suits):
     h, d, c, s = 0, 0, 0, 0
@@ -318,22 +247,13 @@ def hasGoodFlushDraw(cards):
 
 def hasGoodKicker(cards, relevantCard):
     if cards[0] == relevantCard:
-        kicker = card[1]
+        kicker = cards[1]
     else:
-        kicker = card[0]
+        kicker = cards[0]
     if kicker > 9:
         return True
     else:
         return False
-    # if self.madePair:
-
-    # elif self.madeTwoPair:
-
-    # elif self.madeTrips:
-
-    # elif self.madeFourOfKind:
-
-    # elif self.madeStraight:
 
 def numValue(card):
     if card == 't':

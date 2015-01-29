@@ -4,12 +4,13 @@ from hand import *
 from allHands import *
 import itertools
 import equityCalc
+from preflop import getEq
 
 class Round:
 
-    def __init__ (self, initData, oppA, oppB):
-        # initData contains: NEWHAND handId seat holeCard1 holeCard2 [stackSizes] numActivePlayers [activePlayers] timeBank
-
+    def __init__ (self, initData):
+        # initData contains: 
+        # NEWHAND handId seat holeCard1 holeCard2 [stackSizes] [playerNames] numActivePlayers [activePlayers] timeBank
         # generic stuff that doesn't need to be regenerated every hand.
         self.cardList = ['2s','3s','4s','5s','6s','7s','8s','9s','ts','js','qs','ks','as','2c','3c','4c','5c','6c','7c','8c','9c','tc','jc','qc','kc','ac','2h','3h','4h','5h','6h','7h','8h','9h','th','jh','qh','kh','ah','2d','3d','4d','5d','6d','7d','8d','9d','td','jd','qd','kd','ad']
         self.listOfTuples = [tup for tup in itertools.combinations(self.cardList,2)]
@@ -17,53 +18,56 @@ class Round:
         
         # These get initialized at the start of the hand
         self.handId = int(initData[1])
-        self.seat = int(initData[2])
+        #self.seat = int(initData[2])
         self.holeCard1 = initData[3].lower()
         self.holeCard2 = initData[4].lower()
         self.stackSizes = initData[5:8]
-        self.numActivePlayers = int(initData[8])
-        self.activePlayers = initData[9:12]
-        self.timeBank = float(initData[12])
+        self.playerNames = initData[8:11]
+        self.numActivePlayers = int(initData[11])
+        self.activePlayers = initData[11:14]
+        self.timeBank = float(initData[15])
+        print self.timeBank
         
         # These get defined once we get the first GETACTION packet
         self.potSize = 0
         self.numBoardCards = -1
         self.boardCards = []
-        self.stackSizes = []
-        self.numActivePlayers = 0
-        self.activePlayers = []
+
+
         self.numLastActions = 0
         self.lastActions = []
         self.numLegalActions = 0
         self.legalActions = []
 
         self.preFlop = True
-        self.betInto = False
+        self.betInto = True
+        
         self.oppAAggression = 0
         self.oppBAggression = 0
 
 
+        for name in self.playerNames:
+            if name[0:10] == 'struggleBo':
+                self.seat = self.playerNames.index(name)
+                self.playerNames.remove(name)
+        if self.seat == self.numActivePlayers - 1:
+            self.betInto = False
 
-
-        # this Class needs help!!!!
-        #self.oppA = pokerHandDist(self.listOfTuples).removeExistingCards([(self.holeCard1,self.holeCard2)])
-        #self.oppB = pokerHandDist(self.listOfTuples).removeExistingCards([(self.holeCard1,self.holeCard2)])
-            
-        # initialize possible hand objects
-
-        self.oppAName = oppA
-        self.oppBName = oppB
+        self.oppAName = self.playerNames[0]
+        self.oppBName = self.playerNames[1]
         self.oppAProbDist = pokerHandDist(self.listOfTuples)
         self.oppAProbDist.removeExistingCards([self.holeCard1,self.holeCard2])
         self.oppBProbDist = pokerHandDist(self.listOfTuples)
         self.oppBProbDist.removeExistingCards([self.holeCard1,self.holeCard2])
 
+
+
+        self.equities = {}
         
+        self.maxBet = 1000
+        self.maxRaise = 1000
 
-
-
-        self.equities = {} # get from table
-        
+        self.preflopStrength = getEq(self.holeCard1+self.holeCard2)
         
 
     def parsePacket(self,inp):
@@ -105,12 +109,9 @@ class Round:
                     self.oppBProbDist.removeExistingCards(self.boardCards)
             else:
                 if self.oppAProbDist != None:
-                    self.oppAProbDist.removeExistingCards(self.boardCards[:len(self.boardCards)-1])
+                    self.oppAProbDist.removeExistingCards(self.boardCards[self.numBoardCards-1:self.numBoardCards])
                 if self.oppBProbDist != None:
-                    self.oppBProbDist.removeExistingCards(self.boardCards[:len(self.boardCards)-1])
-
-
-
+                    self.oppBProbDist.removeExistingCards(self.boardCards[self.numBoardCards-1:self.numBoardCards])
             
         else:
             for i in range(self.numBoardCards):
@@ -128,24 +129,26 @@ class Round:
             self.legalActions += [inp.pop(0)]
         self.timeBank = float(inp.pop(0))
 
+        m = self.legalActions[self.numLegalActions-1].split(':')
+        if m[0] == 'BET':
+            self.maxBet = int(m[2])
+        elif m[0] == 'RAISE':
+            self.maxRaise = int(m[2])
 
         self.parseOpponentsActionsandUpdateTheirRange()
-        self.updateEquities()
+        if not self.preFlop:
+            self.updateEquities()
 
-
-        
 
     def parseOpponentsActionsandUpdateTheirRange(self):
-        print(self.holeCard1,self.holeCard2)
-        print(self.boardCards)
         actions = self.lastActions
-        print('actions', actions)
         
         for action in actions:
             a = action.split(':')
             if self.preFlop:
                 if a[0] == 'CHECK':
                     pass
+
                 elif a[0] == 'FOLD':
                     if a[1] == self.oppAName:
                         self.oppAProbDist = None
@@ -153,8 +156,7 @@ class Round:
                     elif a[1] == self.oppBName:
                         self.oppBProbDist = None
                         self.numActivePlayers -= 1
-                    # delete opp distribution
-                    # change num of active players
+                    
                 elif a[0] == 'CALL':
                     # remove everything less than .27 and everything greater than .44 (stuff better than aj)
                     if a[2] == self.oppAName:
@@ -167,12 +169,15 @@ class Round:
                     # remove everything less than .4
                     if a[2] == self.oppAName:
                         self.oppAProbDist.preflopUpdate(2) # update level and use preflop table
+                        self.betInto = True
                     elif a[2] == self.oppBName:
                         self.oppBProbDist.preflopUpdate(2)
-                    self.betInto = True
+                        self.betInto = True
+                    
 
                 elif a[0] == 'POST':
                     pass
+
                 elif a[0] == 'DEAL':
                     self.allHands.update(self.boardCards)
                     self.preFlop = False
@@ -183,8 +188,10 @@ class Round:
 
                 elif a[0] == 'CHECK':
                     if a[1] == self.oppAName:
-                        pass
-                        # should show weakness
+                        if self.numBoardCards == 3:
+                            self.oppAProbDist.update('split', 3, 11, self.allHands)
+                        else:
+                            self.oppAProbDist.update('split', 6, 20, self.allHands)
 
                 elif a[0] == 'FOLD':
                     if a[1] == self.oppAName:
@@ -196,39 +203,133 @@ class Round:
 
                 elif a[0] == 'CALL':
                     amountCalled = a[1]
+                    percentCalled = float(amountCalled)/self.potSize # not the pot size they bet into needs to be fixed
                     if a[2] == self.oppAName:
-                        self.oppAAggression += int(3*(float(amountCalled) / self.potSize))
-                        self.oppAProbDist.update(self.oppAAggression, self.allHands)
+                        if self.numBoardCards == 3:
+                            self.oppAAggression += int(6*percentCalled)
+                        else:
+                            self.oppAAggression += int(3*percentCalled)
+                        self.oppAProbDist.update('normal', self.oppAAggression, 20, self.allHands)
                     elif a[2] == self.oppBName:
-                        self.oppBAggression += int(6*(float(amountCalled) / self.potSize)) # not the pot size they bet into needs to be fixed
-                        self.oppBProbDist.update(self.oppBAggression, self.allHands)
+                        if self.numBoardCards == 3:
+                            self.oppBAggression += int(6*percentCalled)
+                        else:
+                            self.oppAAggression += int(3*percentCalled)
 
-                elif a[0] == 'RAISE':
+                        self.oppBProbDist.update('normal', self.oppBAggression, 20, self.allHands)
+
+                elif a[0] == 'RAISE' or a[0] == 'BET':
                     amountRaised = a[1]
+                    percentRaised = float(amountRaised) / self.potSize # not the pot size they bet into needs to be fixed
                     if a[2] == self.oppAName:
-                        self.oppAAggression += int(6*(float(amountRaised) / self.potSize)) # not the pot size they bet into needs to be fixed
-                        self.oppAProbDist.update(self.oppAAggression, self.allHands)
+                        if self.numBoardCards == 3:
+                            self.oppAAggression += int(6*percentRaised) 
+                        else:
+                            self.oppAAggression += int(3*percentRaised) 
+                        self.oppAProbDist.update('normal', self.oppAAggression, 20, self.allHands)
+                        self.betInto = True
                         
                     elif a[2] == self.oppBName:
-                        self.oppBAggression += int(6*(float(amountRaised) / self.potSize)) # not the pot size they bet into needs to be fixed
-                        self.oppBProbDist.update(self.oppBAggression, self.allHands)
+                        if self.numBoardCards == 3:
+                            self.oppBAggression += int(6*percentRaised) 
+                        else:
+                            self.oppBAggression += int(3*percentRaised) 
 
-                        #self.oppAProbDist.update(3,self.allHands)
-            
+                        self.oppBProbDist.update('normal', self.oppBAggression, 20, self.allHands)
+                        self.betInto = True
 
 
     def getBestAction(self):
-        #self.expectedEquity()
+        
+        
         if self.preFlop:
             if self.betInto:
-                print('betInto')
-                # calculate expected value to decided to call
-                self.expectedEquity()
                 self.betInto = False
+
+                # do I want to call?
+                for action in self.legalActions:
+                    a = action.split(':')
+                    if a[0] == "CALL":
+                        amountToCall = int(a[1])
+                
+                if self.numActivePlayers == 2:
+                    if self.preflopStrength > .6:
+                        return 'RAISE:'+ str(min(max(self.potSize/2+amountToCall, 4),self.maxRaise))
+                    elif self.preflopStrength > .37:
+                        return 'CALL:' + str(amountToCall)
+                    else:
+                        return 'FOLD'
+                elif self.numActivePlayers == 3:
+                    if self.preflopStrength > .6:
+                        return 'RAISE:'+ str(min(max(self.potSize/2+amountToCall, 4),self.maxRaise))
+                    elif self.preflopStrength > .37:
+                        return 'CALL:' + str(amountToCall)
+                    else:
+                        return 'FOLD'
+
+                # calculate expected value to decided to call
+                
+                
             else:
-                pass
+                if self.numActivePlayers == 2:
+                    if self.preflopStrength > .6:
+                        return 'RAISE:'+ str(min(max(self.potSize/2,4),self.maxRaise)) # raising off the big blind there is a minimum
+                    else:
+                        return 'CHECK'
+                elif self.numActivePlayers == 3:
+                    if self.preflopStrength > .6:
+                        return 'RAISE:'+ str(min(max(self.potSize/2,4),self.maxRaise)) # raising off the big blind there is a minimum
+                    else:
+                        return 'CHECK'
         else:
-            pass
+            expectedEquity = self.expectedEquity()
+            if self.betInto:
+                for action in self.legalActions:
+                    a = action.split(':')
+                    if a[0] == "CALL":
+                        amountToCall = int(a[1])
+                potOdds = float(amountToCall)/(amountToCall+self.potSize)
+            
+            if self.numActivePlayers == 2:
+                if self.betInto:
+                    self.betInto = False
+                    if expectedEquity > .85:
+                        return 'CALL:' + str(amountToCall)
+                    elif expectedEquity > .55:
+                        return 'RAISE:'+ str(min(self.potSize/2+amountToCall,self.maxRaise))
+                    elif potOdds < expectedEquity:
+                        return 'CALL:' + str(amountToCall)
+                    else:
+                        return 'FOLD'
+                    
+                else:
+                    if expectedEquity > .85:
+                        return 'CHECK'
+                    elif expectedEquity > .55:
+                        return 'BET:'+ str(min(self.potSize/2,self.maxBet))
+                    else:
+                        return 'CHECK'
+
+            elif self.numActivePlayers == 3:
+                if self.betInto:
+                    self.betInto = False
+                    if expectedEquity > .75:
+                        return 'CALL:' + str(amountToCall)
+                    elif expectedEquity > .45:
+                        return 'RAISE:'+ str(min(int(self.potSize/1.5)+amountToCall,self.maxRaise))
+                    elif potOdds < expectedEquity:
+                        return 'CALL:' + str(amountToCall)
+                    else:
+                        return 'FOLD'
+                    
+                else:
+                    if expectedEquity > .75:
+                        return 'CHECK'
+                    elif expectedEquity > .45:
+                        return 'BET:'+ str(min(self.potSize/2,self.maxBet))
+                    else:
+                        return 'CHECK'
+
         
         # v = 2
         # if v < 15:
@@ -249,12 +350,11 @@ class Round:
         # find all combinations of boolean profiles
         # query equity calculator
         # generate full list
-        if self.numActivePlayers == 2:
-            if self.oppAProbDist != None:
-                combinedList = self.oppAProbDist.distribution.keys()
-            else:
-                combinedList = self.oppBProbDist.distribution.keys()
-        elif self.numActivePlayers == 3:
+        if self.oppAProbDist == None:
+            combinedList = self.oppBProbDist.distribution.keys()
+        elif self.oppBProbDist == None:
+            combinedList = self.oppAProbDist.distribution.keys()
+        else:
             combinedList = list(set(list(self.oppAProbDist.distribution.keys()) + list(self.oppBProbDist.distribution.keys())))
 
         # without boolean check
@@ -318,25 +418,47 @@ class Round:
                 totalB += self.oppBProbDist.distribution[key] * self.equities[key]
         else:
             totalB = 1
-        print('A Name', self.oppAName)
-        print('A', self.oppAProbDist.distribution)
-        print('A length', len(self.oppAProbDist.distribution))
-        print('B Name', self.oppBName)
-        print('B', self.oppBProbDist.distribution)
-        print('B length', len(self.oppBProbDist.distribution))
-        print('total', totalA * totalB)
+        return totalA*totalB
+
+        # print('A Name', self.oppAName)
+        # print('A', self.oppAProbDist.distribution)
+        # print('A length', len(self.oppAProbDist.distribution))
+        # print('B Name', self.oppBName)
+        # print('B', self.oppBProbDist.distribution)
+        # print('B length', len(self.oppBProbDist.distribution))
+        # print('total', totalA * totalB)
         #return total
 
 
-data = ['NEWHAND', '11', '3', 'Jd', '3d', '233', '176', '188', '3', 'true', 'true', 'true', '8.789302']
-r = Round(data, 'P2', 'P3')
-parse = ['GETACTION', '4', '0', '233', '175', '188', '3', 'true', 'true', 'true', '4', 'POST:1:P3', 'POST:2:v1', 'CALL:2:P2', 'RAISE:4:P3', '2', 'CHECK', 'RAISE:4:6', '8.789301610999999']
-parse2 = ['GETACTION', '4', '3', 'As', 'Ah', '5c', '233', '175', '188', '2', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:FLOP', 'RAISE:5:P3', '2', 'CHECK', 'BET:2:4', '8.664166238']
-# parse3 = ['GETACTION', '4', '4', 'As', 'Ah', '5c', 'Th', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:TURN', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.609433912']
-# parse4 = ['GETACTION', '4', '5', 'As', 'Ah', '5c', 'Th', 'Kc', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:RIVER', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.547964306']
-r.parsePacket(parse)
-#r.parsePacket(parse2)
-r.getBestAction()
+# data = ['NEWHAND', '24', '3', 'Jc', 'Ac', '218', '200', '182', 'P32', 'P22', 'struggleBot2', '3', 'true', 'true', 'true', '-1.616462']
+# r = Round(data)
+# parse = ['GETACTION', '10', '0', '216', '194', '180', '3', 'true', 'true', 'true', '4', 'POST:1:P22', 'POST:2:struggleBot2', 'CALL:2:P32', 'RAISE:6:P22', '3', 'FOLD', 'CALL:6', 'RAISE:10:20', '-1.616461590000002']
+# parse2 = ['GETACTION', '18', '3', '7h', '3c', '9c', '212', '194', '176', '3', 'true', 'true', 'true', '4', 'CALL:6:struggleBot2', 'CALL:6:P32', 'DEAL:FLOP', 'CHECK:P22', '2', 'CHECK', 'BET:2:18', '-2.123151129000002']
+# # parse3 = ['GETACTION', '4', '4', 'As', 'Ah', '5c', 'Th', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:TURN', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.609433912']
+# # parse4 = ['GETACTION', '4', '5', 'As', 'Ah', '5c', 'Th', 'Kc', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:RIVER', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.547964306']
+# r.parsePacket(parse)
+# #r.parsePacket(parse2)
+# print r.getBestAction()
+# r.parsePacket(parse2)
+# print r.getBestAction()
+
+
+
+        
+
+
+# data = ['NEWHAND', '11', '3', 'Kd', 'Ad', '233', '176', '188', '3', 'true', 'true', 'true', '8.789302']
+# r = Round(data, 'P2', 'P3')
+# parse = ['GETACTION', '9', '0', '233', '175', '188', '3', 'true', 'true', 'true', '4', 'POST:1:P3', 'POST:2:v1', 'CALL:2:P2', 'RAISE:4:P3', '3', 'CHECK','CALL:2', 'RAISE:4:6', '8.789301610999999']
+# parse2 = ['GETACTION', '15', '3', 'As', 'Ah', '5c', '233', '175', '188', '3', 'true', 'true', 'true', '4', 'CALL:2:v1', 'DEAL:FLOP', 'CHECK:P2', 'RAISE:5:P3', '3', 'CHECK','CALL:5', 'BET:2:4', '8.664166238']
+# # parse3 = ['GETACTION', '4', '4', 'As', 'Ah', '5c', 'Th', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:TURN', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.609433912']
+# # parse4 = ['GETACTION', '4', '5', 'As', 'Ah', '5c', 'Th', 'Kc', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:RIVER', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.547964306']
+# r.parsePacket(parse)
+# print r.getBestAction()
+
+# r.parsePacket(parse2)
+# print r.getBestAction()
+
 
 # # These get initialized at the start of the hand
 # print r.handId
