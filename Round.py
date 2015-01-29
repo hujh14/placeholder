@@ -38,6 +38,7 @@ class Round:
         self.legalActions = []
 
         self.preFlop = True
+        self.betInto = False
         self.oppAAggression = 0
         self.oppBAggression = 0
 
@@ -168,6 +169,7 @@ class Round:
                         self.oppAProbDist.preflopUpdate(2, self.startingHandStrengths) # update level and use preflop table
                     elif a[2] == self.oppBName:
                         self.oppBProbDist.preflopUpdate(2, self.startingHandStrengths)
+                    self.betInto = True
 
                 elif a[0] == 'POST':
                     pass
@@ -216,12 +218,13 @@ class Round:
 
 
     def getBestAction(self):
+        self.expectedEquity()
         if self.preFlop:
-            if self.seat == 1:
-                pass
-            elif self.seat == 2:
-                pass
-            elif self.seat == 3:
+            if self.betInto:
+                # calculate expected value to decided to call
+                self.expectedEquity()
+                self.betInto = False
+            else:
                 pass
         else:
             pass
@@ -245,7 +248,6 @@ class Round:
         # find all combinations of boolean profiles
         # query equity calculator
         # generate full list
-        print self.numActivePlayers
         if self.numActivePlayers == 2:
             if self.oppAProbDist != None:
                 combinedList = self.oppAProbDist.distribution.keys()
@@ -302,16 +304,36 @@ class Round:
         #                 self.equities[(keyA,keyB)] = eq
         #         print len(self.equities)
 
+    def expectedEquity(self):
+        totalA = 0
+        totalB = 0
+        if self.oppAProbDist != None:
+            for key in self.oppAProbDist.distribution:
+                totalA += self.oppAProbDist.distribution[key] * self.equities[key]
+        else:
+            totalA = 1
+        if self.oppBProbDist != None:
+            for key in self.oppBProbDist.distribution:
+                totalB += self.oppBProbDist.distribution[key] * self.equities[key]
+        else:
+            totalB = 1
+        print 'A', self.oppAProbDist
+        print 'B Name', self.oppBName
+        print 'B', self.oppBProbDist.distribution
+        print 'B length', len(self.oppBProbDist.distribution)
+        print 'total', totalA*totalB
+        #return total
 
 
 data = ['NEWHAND', '11', '3', 'Jd', '3d', '233', '176', '188', '3', 'true', 'true', 'true', '8.789302']
 r = Round(data, 'P2', 'P3')
 parse = ['GETACTION', '4', '0', '233', '175', '188', '3', 'true', 'true', 'true', '4', 'POST:1:P3', 'POST:2:v1', 'FOLD:P2', 'CALL:2:P3', '2', 'CHECK', 'RAISE:4:6', '8.789301610999999']
-parse2 = ['GETACTION', '4', '3', 'As', 'Ah', '5c', '233', '175', '188', '2', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:FLOP', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.664166238']
+parse2 = ['GETACTION', '4', '3', 'As', 'Ah', '5c', '233', '175', '188', '2', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:FLOP', 'RAISE:5:P3', '2', 'CHECK', 'BET:2:4', '8.664166238']
 # parse3 = ['GETACTION', '4', '4', 'As', 'Ah', '5c', 'Th', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:TURN', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.609433912']
 # parse4 = ['GETACTION', '4', '5', 'As', 'Ah', '5c', 'Th', 'Kc', '233', '175', '188', '3', 'true', 'true', 'true', '3', 'CHECK:v1', 'DEAL:RIVER', 'CHECK:P3', '2', 'CHECK', 'BET:2:4', '8.547964306']
 r.parsePacket(parse)
 r.parsePacket(parse2)
+r.getBestAction()
 
 # # These get initialized at the start of the hand
 # print r.handId
