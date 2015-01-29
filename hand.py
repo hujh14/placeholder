@@ -46,27 +46,27 @@ class Hand():
         self.Id = temp1+temp2+temp3
 
     def PrintEverything(self):
-        print 'madePair', self.madePair
-        print 'pairSize', self.pairSize
+        print('madePair', self.madePair)
+        print('pairSize', self.pairSize)
 
-        print 'madeTwoPair', self.madeTwoPair
-        print 'twoPairSize', self.twoPairSize
+        print('madeTwoPair', self.madeTwoPair)
+        print('twoPairSize', self.twoPairSize)
 
-        print 'madeTrips', self.madeTrips
-        print 'tripSize', self.tripSize
+        print('madeTrips', self.madeTrips)
+        print('tripSize', self.tripSize)
 
-        print 'madeStraight', self.madeStraight
-        print 'madeFlush', self.madeFlush
-        print 'madeFullHouse', self.madeFullHouse
-        print 'FullHouseSize', self.FullHouseSize
-        print 'madeFourOfKind', self.madeFourOfKind
-        print 'madeStraightFlush', self.madeStraightFlush
+        print('madeStraight', self.madeStraight)
+        print('madeFlush', self.madeFlush)
+        print('madeFullHouse', self.madeFullHouse)
+        print('FullHouseSize', self.FullHouseSize)
+        print('madeFourOfKind', self.madeFourOfKind)
+        print('madeStraightFlush', self.madeStraightFlush)
 
-        print 'OpenEndedStraightDraw', self.OpenEndedStraightDraw
-        print 'GutShotStraightDraw', self.GutShotStraightDraw
-        print 'FlushDraw', self.FlushDraw
-        print self.Id
-        print self.strength
+        print('OpenEndedStraightDraw', self.OpenEndedStraightDraw)
+        print('GutShotStraightDraw', self.GutShotStraightDraw)
+        print('FlushDraw', self.FlushDraw)
+        print(self.Id)
+        print(self.strength)
 
 
     def update(self, board):

@@ -136,10 +136,10 @@ class Round:
         
 
     def parseOpponentsActionsandUpdateTheirRange(self):
-        print self.holeCard1,self.holeCard2
-        print self.boardCards
+        print(self.holeCard1,self.holeCard2)
+        print(self.boardCards)
         actions = self.lastActions
-        print 'actions', actions
+        print('actions', actions)
         
         for action in actions:
             a = action.split(':')
@@ -221,7 +221,7 @@ class Round:
         #self.expectedEquity()
         if self.preFlop:
             if self.betInto:
-                print 'betInto'
+                print('betInto')
                 # calculate expected value to decided to call
                 self.expectedEquity()
                 self.betInto = False
@@ -255,7 +255,7 @@ class Round:
             else:
                 combinedList = self.oppBProbDist.distribution.keys()
         elif self.numActivePlayers == 3:
-            combinedList = list(set(self.oppAProbDist.distribution.keys() + self.oppBProbDist.distribution.keys()))
+            combinedList = list(set(list(self.oppAProbDist.distribution.keys()) + list(self.oppBProbDist.distribution.keys())))
 
         # without boolean check
         self.equities = {}
@@ -318,13 +318,13 @@ class Round:
                 totalB += self.oppBProbDist.distribution[key] * self.equities[key]
         else:
             totalB = 1
-        print 'A Name', self.oppAName
-        print 'A', self.oppAProbDist.distribution
-        print 'A length', len(self.oppAProbDist.distribution)
-        print 'B Name', self.oppBName
-        print 'B', self.oppBProbDist.distribution
-        print 'B length', len(self.oppBProbDist.distribution)
-        print 'total', totalA*totalB
+        print('A Name', self.oppAName)
+        print('A', self.oppAProbDist.distribution)
+        print('A length', len(self.oppAProbDist.distribution))
+        print('B Name', self.oppBName)
+        print('B', self.oppBProbDist.distribution)
+        print('B length', len(self.oppBProbDist.distribution))
+        print('total', totalA * totalB)
         #return total
 
 
