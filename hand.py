@@ -118,7 +118,7 @@ class Hand():
                 else:
                     self.hasOpenEndedStraightDraw = True
                     self.strength += 1
-            if hasGoodKicker:
+            if hasGoodKicker(self.cards, self.tripSize):
                 self.strength += 1
 
         elif len(duplicates) >= 2: # this works
@@ -137,7 +137,7 @@ class Hand():
                 else:
                     self.hasOpenEndedStraightDraw = True
                     self.strength += 1
-            if hasGoodKicker:
+            if hasGoodKicker(self.cards, self.twoPairSize):
                 self.strength += 1
 
         elif len(duplicates) == 1:
@@ -153,7 +153,7 @@ class Hand():
             if hasFlushDraw(suits):
                 self.FlushDraw = True
                 self.strength += 2
-            if hasGoodKicker(nums):
+            if hasGoodKicker(self.cards, self.pairSize):
                 self.strength += 1
 
             straightDrawOuts = countStraightDrawOuts(nums)
@@ -199,7 +199,28 @@ def hasFourOfKind(duplicates):
     return False
 
 def hasStraightFlush(cards):
-    return False
+    h, d, c, s = 0, 0, 0, 0
+
+    for x in cards:
+        if x[1] == 'h':
+            h += 1
+        if x[1] == 'd':
+            d += 1
+        if x[1] == 'c':
+            c += 1
+        if x[1] == 's':
+            s += 1
+
+    if h > 4 or d > 4 or c > 4 or s > 4:
+        for i in range(len(cards)-1):
+            diff = cards[i]-cards[i-1]
+            if diff != 1:
+                if i > 3:
+                    cards.pop(i)
+                else:
+                    cards.pop(i-1)
+        
+    return (len(cards) > 4)
 
 def hasFlush(suits):
     h, d, c, s = 0, 0, 0, 0
@@ -243,14 +264,76 @@ def hasStraight(cards):
     return (len(cards) > 4)
 
 def countStraightDrawOuts(nums):
-    return 0
+    if len(nums) == 7:
+        return 0
+
+    x = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+    count = 0
+    for i in x:
+        test = nums[:]
+        test.append(i)
+        test.sort()
+        if hasStraight(test):
+            count +=1
+    return count
+
 
 def hasGoodFlushDraw(cards):
-    pass
+    hearts = []
+    diamonds = []
+    spades = []
+    clubs = []
+    kickers = []
 
-def hasGoodKicker(cards,):
-    pass
+    for x in cards:
+        if x[1]=='h':
+            hearts.append(x)
+        elif x[1]=='d':
+            hearts.append(x)
+        elif x[1]=='s':
+            spades.append(x)
+        elif x[1]=='c':
+            clubs.append(x)
 
+    if len(hearts)>3:
+        kickers = diamonds + spades+ clubs
+    elif len(diamonds)>3:
+        kickers = hearts + spades + clubs
+    elif len(spades)>3:
+        kickers = hearts + diamonds + clubs
+    elif len(clubs)>3:
+        kickers = hearts + diamonds + spades
+
+    for i in kickers:
+        if i[0]=='a':
+            return True
+        elif i[0]=='k':
+            return True
+        elif i[0]=='q':
+            return True
+        elif i[0]=='j':
+            return True
+        else:
+            return False
+
+def hasGoodKicker(cards, relevantCard):
+    if cards[0] == relevantCard:
+        kicker = card[1]
+    else:
+        kicker = card[0]
+    if kicker > 9:
+        return True
+    else:
+        return False
+    # if self.madePair:
+
+    # elif self.madeTwoPair:
+
+    # elif self.madeTrips:
+
+    # elif self.madeFourOfKind:
+
+    # elif self.madeStraight:
 
 def numValue(card):
     if card == 't':
@@ -270,7 +353,6 @@ def numValue(card):
 #h.update(['as','8h','8d','tc','9h'])
 #h.PrintEverything()
 
+
 # Three pairs down register
 # Straights dont register
-
-        
