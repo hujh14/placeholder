@@ -8,10 +8,11 @@ from preflop import getEq
 
 class Round:
 
-    def __init__ (self, initData):
+    def __init__ (self, initData, myName, oppAName, oppBName):
         # initData contains: 
         # NEWHAND handId seat holeCard1 holeCard2 [stackSizes] [playerNames] numActivePlayers [activePlayers] timeBank
         # generic stuff that doesn't need to be regenerated every hand.
+
         self.cardList = ['2s','3s','4s','5s','6s','7s','8s','9s','ts','js','qs','ks','as','2c','3c','4c','5c','6c','7c','8c','9c','tc','jc','qc','kc','ac','2h','3h','4h','5h','6h','7h','8h','9h','th','jh','qh','kh','ah','2d','3d','4d','5d','6d','7d','8d','9d','td','jd','qd','kd','ad']
         self.listOfTuples = [tup for tup in itertools.combinations(self.cardList,2)]
         self.allHands = allHands(self.listOfTuples)
@@ -26,7 +27,7 @@ class Round:
         self.numActivePlayers = int(initData[11])
         self.activePlayers = initData[11:14]
         self.timeBank = float(initData[15])
-        print self.timeBank
+        
         
         # These get defined once we get the first GETACTION packet
         self.potSize = 0
@@ -47,14 +48,16 @@ class Round:
 
 
         for name in self.playerNames:
-            if name[0:10] == 'struggleBo':
+            if name == myName:
                 self.seat = self.playerNames.index(name)
-                self.playerNames.remove(name)
         if self.seat == self.numActivePlayers - 1:
             self.betInto = False
 
-        self.oppAName = self.playerNames[0]
-        self.oppBName = self.playerNames[1]
+        self.oppAName = oppAName
+        self.oppBName = oppBName
+        self.oppAPreflopRaiseNum = 0
+        self.oppBPreflopRaiseNum = 0
+        self.strugglebotPreflopRaiseNum = 0
         self.oppAProbDist = pokerHandDist(self.listOfTuples)
         self.oppAProbDist.removeExistingCards([self.holeCard1,self.holeCard2])
         self.oppBProbDist = pokerHandDist(self.listOfTuples)
@@ -147,7 +150,10 @@ class Round:
             a = action.split(':')
             if self.preFlop:
                 if a[0] == 'CHECK':
-                    pass
+                    if a[1] == self.oppAName:
+                        self.oppAProbDist.preflopUpdate(3)
+                    elif a[1] == self.oppBName:
+                        self.oppBProbDist.preflopUpdate(3)
 
                 elif a[0] == 'FOLD':
                     if a[1] == self.oppAName:
@@ -160,18 +166,42 @@ class Round:
                 elif a[0] == 'CALL':
                     # remove everything less than .27 and everything greater than .44 (stuff better than aj)
                     if a[2] == self.oppAName:
-                        self.oppAProbDist.preflopUpdate(1)
+                        if a[1] < 6:
+                            self.oppAProbDist.preflopUpdate(1)
+                        else:
+                            self.oppAProbDist.preflopUpdate(2)
                     elif a[2] == self.oppBName:
-                        self.oppBProbDist.preflopUpdate(1)
-                    # relatively weak move
+                        if a[1] < 6:
+                            self.oppBProbDist.preflopUpdate(1)
+                        else:
+                            self.oppBProbDist.preflopUpdate(2)
+                        # relatively weak move
 
                 elif a[0] == 'RAISE':
                     # remove everything less than .4
                     if a[2] == self.oppAName:
-                        self.oppAProbDist.preflopUpdate(2) # update level and use preflop table
+                        if self.oppAPreflopRaiseNum == 0:
+                            self.oppAProbDist.preflopUpdate(2) # update level and use preflop table
+                        elif self.oppAPreflopRaiseNum == 1:
+                            self.oppAProbDist.preflopUpdate(4)
+                        elif self.oppAPreflopRaiseNum == 2:
+                            self.oppAProbDist.preflopUpdate(5)
+                        else:
+                            self.oppAProbDist.preflopUpdate(6)
+
+                        self.oppAPreflopRaiseNum += 1
                         self.betInto = True
                     elif a[2] == self.oppBName:
-                        self.oppBProbDist.preflopUpdate(2)
+                        if self.oppBPreflopRaiseNum == 0:
+                            self.oppBProbDist.preflopUpdate(2) # update level and use preflop table
+                        elif self.oppBPreflopRaiseNum == 1:
+                            self.oppBProbDist.preflopUpdate(4)
+                        elif self.oppBPreflopRaiseNum == 2:
+                            self.oppBProbDist.preflopUpdate(5)
+                        else:
+                            self.oppBProbDist.preflopUpdate(6)
+
+                        self.oppBPreflopRaiseNum += 1
                         self.betInto = True
                     
 
@@ -240,11 +270,19 @@ class Round:
 
 
     def getBestAction(self):
-        
-        
+        print self.handId
+        # if self.oppAProbDist != None:
+        #     print 'Opp A Range', self.oppAProbDist.distribution.keys()
+        # if self.oppBProbDist != None:
+        #     print 'Opp B Range', self.oppBProbDist.distribution.keys()
+
+
+
+
         if self.preFlop:
             if self.betInto:
                 self.betInto = False
+                numTimesRaisedPreflop = self.oppAPreflopRaiseNum+self.oppBPreflopRaiseNum+self.strugglebotPreflopRaiseNum
 
                 # do I want to call?
                 for action in self.legalActions:
@@ -252,37 +290,68 @@ class Round:
                     if a[0] == "CALL":
                         amountToCall = int(a[1])
                 
-                if self.numActivePlayers == 2:
-                    if self.preflopStrength > .6:
-                        return 'RAISE:'+ str(min(max(self.potSize/2+amountToCall, 4),self.maxRaise))
-                    elif self.preflopStrength > .37:
-                        return 'CALL:' + str(amountToCall)
+                if True: #self.numActivePlayers == 2:
+                    if numTimesRaisedPreflop == 0:
+                        if self.preflopStrength > .41:
+                            self.strugglebotPreflopRaiseNum += 1
+                            return 'RAISE:'+ str(min(max(self.potSize/2+amountToCall, 4),self.maxRaise))
+                        elif amountToCall == 1:
+                            if self.preflopStrength > .19:
+                                return 'CALL:' + str(amountToCall)
+                            else:
+                                return 'FOLD'
+                        elif self.preflopStrength > .31:
+                            return 'CALL:' + str(amountToCall)
+                        else:
+                            return 'FOLD'
+                    if numTimesRaisedPreflop == 1:
+                        if self.preflopStrength > .455:
+                            self.strugglebotPreflopRaiseNum += 1
+                            return 'RAISE:'+ str(min(max(self.potSize/2+amountToCall, 4),self.maxRaise))
+                        elif self.preflopStrength > .405:
+                            return 'CALL:' + str(amountToCall)
+                        elif self.preflopStrength > .33 and amountToCall < 5:
+                            return 'CALL:' + str(amountToCall)
+                        else:
+                            return 'FOLD'
+                    if numTimesRaisedPreflop == 2:
+                        if self.preflopStrength > .6:
+                            self.strugglebotPreflopRaiseNum += 1
+                            return 'RAISE:'+ str(min(max(self.potSize/2+amountToCall, 4),self.maxRaise))
+                        elif self.preflopStrength > .468:
+                            return 'CALL:' + str(amountToCall)
+                        else:
+                            return 'FOLD'
                     else:
-                        return 'FOLD'
-                elif self.numActivePlayers == 3:
-                    if self.preflopStrength > .6:
-                        return 'RAISE:'+ str(min(max(self.potSize/2+amountToCall, 4),self.maxRaise))
-                    elif self.preflopStrength > .37:
-                        return 'CALL:' + str(amountToCall)
-                    else:
-                        return 'FOLD'
+                        if self.preflopStrength == .64:
+                            self.strugglebotPreflopRaiseNum += 1
+                            return 'RAISE:'+ str(min(max(self.potSize/2+amountToCall, 4),self.maxRaise))
+                        elif self.preflopStrength > .48:
+                            return 'CALL:' + str(amountToCall)
+                        else:
+                            return 'FOLD'
+
+                # elif self.numActivePlayers == 3:
+                #     if self.preflopStrength > .6:
+                #         return 'RAISE:'+ str(min(max(self.potSize/2+amountToCall, 4),self.maxRaise))
+                #     elif self.preflopStrength > .37:
+                #         return 'CALL:' + str(amountToCall)
+                #     else:
+                #         return 'FOLD'
 
                 # calculate expected value to decided to call
                 
                 
             else:
-                if self.numActivePlayers == 2:
-                    if self.preflopStrength > .6:
-                        return 'RAISE:'+ str(min(max(self.potSize/2,4),self.maxRaise)) # raising off the big blind there is a minimum
-                    else:
-                        return 'CHECK'
-                elif self.numActivePlayers == 3:
-                    if self.preflopStrength > .6:
-                        return 'RAISE:'+ str(min(max(self.potSize/2,4),self.maxRaise)) # raising off the big blind there is a minimum
-                    else:
-                        return 'CHECK'
+                
+                if self.preflopStrength > .43:
+                    return 'RAISE:'+ str(min(max(self.potSize/2,4),self.maxRaise)) # raising off the big blind there is a minimum
+                else:
+                    return 'CHECK'
+                
         else:
             expectedEquity = self.expectedEquity()
+            print 'expected Equity', expectedEquity
             if self.betInto:
                 for action in self.legalActions:
                     a = action.split(':')
@@ -293,7 +362,7 @@ class Round:
             if self.numActivePlayers == 2:
                 if self.betInto:
                     self.betInto = False
-                    if expectedEquity > .85:
+                    if expectedEquity > .8 and self.numBoardCards != 3:
                         return 'CALL:' + str(amountToCall)
                     elif expectedEquity > .55:
                         return 'RAISE:'+ str(min(self.potSize/2+amountToCall,self.maxRaise))
@@ -303,9 +372,12 @@ class Round:
                         return 'FOLD'
                     
                 else:
-                    if expectedEquity > .85:
-                        return 'CHECK'
-                    elif expectedEquity > .55:
+                    if expectedEquity > .8:
+                        if self.numBoardCards == 3:
+                            return 'CHECK'
+                        else:
+                            return 'BET:'+ str(min(self.potSize/2,self.maxBet))
+                    elif expectedEquity > .5:
                         return 'BET:'+ str(min(self.potSize/2,self.maxBet))
                     else:
                         return 'CHECK'
@@ -315,7 +387,7 @@ class Round:
                     self.betInto = False
                     if expectedEquity > .75:
                         return 'CALL:' + str(amountToCall)
-                    elif expectedEquity > .45:
+                    elif expectedEquity > .43:
                         return 'RAISE:'+ str(min(int(self.potSize/1.5)+amountToCall,self.maxRaise))
                     elif potOdds < expectedEquity:
                         return 'CALL:' + str(amountToCall)
@@ -324,7 +396,10 @@ class Round:
                     
                 else:
                     if expectedEquity > .75:
-                        return 'CHECK'
+                        if self.numBoardCards == 3:
+                            return 'CHECK'
+                        else:
+                            return 'BET:'+ str(min(self.potSize/2,self.maxBet))
                     elif expectedEquity > .45:
                         return 'BET:'+ str(min(self.potSize/2,self.maxBet))
                     else:

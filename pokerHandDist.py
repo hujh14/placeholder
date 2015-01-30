@@ -65,13 +65,37 @@ class pokerHandDist:
                         for key in self.distribution:
                                 stringkey = key[0]+key[1]
                                 strength = getEq(stringkey)
-                                if strength > 0.45 or strength < 0.27:
+                                if strength > 0.49 or strength < 0.27:
                                         toDelete.append(key)
                 elif level == 2:
                         for key in self.distribution:
                                 stringkey = key[0]+key[1]
                                 strength = getEq(stringkey)
                                 if strength < .4:
+                                        toDelete.append(key)
+                elif level == 3:
+                        for key in self.distribution:
+                                stringkey = key[0]+key[1]
+                                strength = getEq(stringkey)
+                                if strength > .45:
+                                        toDelete.append(key)
+                elif level == 4:
+                        for key in self.distribution:
+                                stringkey = key[0]+key[1]
+                                strength = getEq(stringkey)
+                                if strength < .44:
+                                        toDelete.append(key)
+                elif level == 5:
+                        for key in self.distribution:
+                                stringkey = key[0]+key[1]
+                                strength = getEq(stringkey)
+                                if strength < .47:
+                                        toDelete.append(key)
+                elif level == 6:
+                        for key in self.distribution:
+                                stringkey = key[0]+key[1]
+                                strength = getEq(stringkey)
+                                if strength < .56:
                                         toDelete.append(key)
 
                 for key in toDelete:

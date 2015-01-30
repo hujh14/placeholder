@@ -27,20 +27,61 @@ class Player:
             # the engine and act on it. We are just printing it instead.
             # print data
             inp = data.split()
-            if inp[0] == 'NEWGAME':
-                pass
+            timeleft = float(inp[-1])
 
-            elif inp[0] == 'NEWHAND':
-                #print inp
-                r = Round(inp)
-                
-            elif inp[0] == 'GETACTION':
-                #print 'parse', inp
-                r.parsePacket(inp)
-                action = r.getBestAction()
-                #print action
-                s.send(action + "\n")
-                #print("Action: " + action)
+            if timeleft > 10:
+                if inp[0] == 'NEWGAME':
+                    myName = inp[1]
+                    oppAName = inp[2]
+                    oppBName = inp[3]
+                    
+
+                elif inp[0] == 'NEWHAND':
+                    #print inp
+                    r = Round(inp, myName, oppAName, oppBName)
+                    
+                    
+                elif inp[0] == 'GETACTION':
+                    
+                    r.parsePacket(inp)
+                    action = r.getBestAction()
+                    
+                    
+                    s.send(action + "\n")
+                    #print("Action: " + action)
+
+                elif inp[0] == "REQUESTKEYVALUES":
+                    # At the end, the engine will allow your bot save key/value pairs.
+                    # Send FINISH to indicate you're done.
+                    s.send("FINISH\n")
+            else:
+                print 'checking mode'
+                if inp[0] == 'NEWGAME':
+                    myName = inp[1]
+                    oppAName = inp[2]
+                    oppBName = inp[3]
+                    
+
+                elif inp[0] == 'NEWHAND':
+                    #print inp
+                    pass
+                    
+                    
+                elif inp[0] == 'GETACTION':
+                    
+                    #r.parsePacket(inp)
+                    action = 'CHECK' #r.getBestAction()
+                    
+                    
+                    s.send(action + "\n")
+                    #print("Action: " + action)
+
+                elif inp[0] == "REQUESTKEYVALUES":
+                    # At the end, the engine will allow your bot save key/value pairs.
+                    # Send FINISH to indicate you're done.
+                    s.send("FINISH\n")
+            
+
             
             # When appropriate, reply to the engine with a legal action.
             # The engine will ignore all spurious responses.
@@ -49,11 +90,7 @@ class Player:
             # When sending responses, terminate each response with a newline
             # character (\n) or your bot will hang!
 
-            elif inp[0] == "REQUESTKEYVALUES":
-                # At the end, the engine will allow your bot save key/value pairs.
-                # Send FINISH to indicate you're done.
-                s.send("FINISH\n")
-        # Clean up the socket.
+            
         s.close()
 
 if __name__ == '__main__':
@@ -66,6 +103,7 @@ if __name__ == '__main__':
     print 'Connecting to %s:%d' % (args.host, args.port)
     try:
         s = socket.create_connection((args.host, args.port))
+        #print 'Connected!', args.port
     except socket.error as e:
         print 'Error connecting! Aborting'
         exit()
