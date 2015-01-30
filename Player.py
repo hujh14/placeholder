@@ -29,7 +29,7 @@ class Player:
             inp = data.split()
             timeleft = float(inp[-1])
 
-            if timeleft > 10:
+            if timeleft > 5:
                 if inp[0] == 'NEWGAME':
                     myName = inp[1]
                     oppAName = inp[2]
@@ -55,22 +55,32 @@ class Player:
                     # Send FINISH to indicate you're done.
                     s.send("FINISH\n")
             else:
-                print 'checking mode'
+                
                 if inp[0] == 'NEWGAME':
-                    myName = inp[1]
-                    oppAName = inp[2]
-                    oppBName = inp[3]
+                    pass
                     
 
                 elif inp[0] == 'NEWHAND':
-                    #print inp
+                    
                     pass
                     
                     
                 elif inp[0] == 'GETACTION':
+                    counter = 0
+                    for test in inp:
+                        if test == '0' or test == '1' or test == '2' or test == '3' or test == '4' or test == '5' or test == '6' or test == '7':
+                            location = counter
+                        counter += 1
+                    legalActions = inp[location+1:len(inp)-1]
                     
-                    #r.parsePacket(inp)
-                    action = 'CHECK' #r.getBestAction()
+                    for act in legalActions:
+                        a = act.split(':')
+                        if a[0] == 'RAISE':
+                            action = 'RAISE:' + a[2]
+                        elif a[0] == 'BET':
+                            action = 'BET:' + a[2]
+                        else:
+                            action = 'CHECK'
                     
                     
                     s.send(action + "\n")

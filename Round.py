@@ -3,7 +3,6 @@ import pbots_calc
 from hand import *
 from allHands import *
 import itertools
-import equityCalc
 from preflop import getEq
 
 class Round:
@@ -236,15 +235,15 @@ class Round:
                     percentCalled = float(amountCalled)/self.potSize # not the pot size they bet into needs to be fixed
                     if a[2] == self.oppAName:
                         if self.numBoardCards == 3:
-                            self.oppAAggression += int(6*percentCalled)
+                            self.oppAAggression += int(5*percentCalled)
                         else:
-                            self.oppAAggression += int(3*percentCalled)
+                            self.oppAAggression += int(2*percentCalled)
                         self.oppAProbDist.update('normal', self.oppAAggression, 20, self.allHands)
                     elif a[2] == self.oppBName:
                         if self.numBoardCards == 3:
-                            self.oppBAggression += int(6*percentCalled)
+                            self.oppBAggression += int(5*percentCalled)
                         else:
-                            self.oppAAggression += int(3*percentCalled)
+                            self.oppAAggression += int(2*percentCalled)
 
                         self.oppBProbDist.update('normal', self.oppBAggression, 20, self.allHands)
 
@@ -253,24 +252,24 @@ class Round:
                     percentRaised = float(amountRaised) / self.potSize # not the pot size they bet into needs to be fixed
                     if a[2] == self.oppAName:
                         if self.numBoardCards == 3:
-                            self.oppAAggression += int(6*percentRaised) 
+                            self.oppAAggression += int(5*percentRaised) 
                         else:
-                            self.oppAAggression += int(3*percentRaised) 
+                            self.oppAAggression += int(2*percentRaised) 
                         self.oppAProbDist.update('normal', self.oppAAggression, 20, self.allHands)
                         self.betInto = True
                         
                     elif a[2] == self.oppBName:
                         if self.numBoardCards == 3:
-                            self.oppBAggression += int(6*percentRaised) 
+                            self.oppBAggression += int(5*percentRaised) 
                         else:
-                            self.oppBAggression += int(3*percentRaised) 
+                            self.oppBAggression += int(2*percentRaised) 
 
                         self.oppBProbDist.update('normal', self.oppBAggression, 20, self.allHands)
                         self.betInto = True
 
 
     def getBestAction(self):
-        print self.handId
+        #print self.handId
         # if self.oppAProbDist != None:
         #     print 'Opp A Range', self.oppAProbDist.distribution.keys()
         # if self.oppBProbDist != None:
@@ -351,7 +350,7 @@ class Round:
                 
         else:
             expectedEquity = self.expectedEquity()
-            print 'expected Equity', expectedEquity
+            #print 'expected Equity', expectedEquity
             if self.betInto:
                 for action in self.legalActions:
                     a = action.split(':')
